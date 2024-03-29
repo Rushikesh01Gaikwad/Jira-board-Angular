@@ -7,10 +7,20 @@ import {Projectinterface} from './projectinterface'
 })
 export class ProjectjsonService {
 
-  constructor(private httpclient : HttpClient) { }
+  constructor(private httpClient : HttpClient) {}
 
-  get()
+  getAll()
   {
-    return this.httpclient.get<Projectinterface[]>('http://localhost:3000/projectData')
+    return this.httpClient.get<Projectinterface[]>('http://localhost:3000/projectData');
+  }
+
+  create(data: Projectinterface)
+  {
+    return this.httpClient.post('http://localhost:3000/projectData', data);
+  }
+
+  edit(id:number) 
+  {
+    this.httpClient.get<Projectinterface[]>(`http://localhost:3000/projectData/${id}`);
   }
 }

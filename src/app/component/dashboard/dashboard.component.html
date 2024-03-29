@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-          <button class="btn btn-outline-primary" type="submit" (click)="addprojects()"><b>Add Project</b></button>
+          <a class="btn btn-outline-primary" type="submit" (click)="addprojects()"><b>Add Project</b></a>
           <button class="btn btn-outline-danger mx-3" type="submit" (click)="loginpage()"><b>Logout</b></button>
       </div>
     </div>
@@ -23,5 +23,31 @@
           </div>
       </div>
     </nav>
+  </div>
+  <div class="container mt-4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Status</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of allprojects">
+          <th scope="row">{{item.id}}</th>
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.status}}</td>
+          <td>{{item.date}}</td>
+          <td>{{item.time}}</td>
+          <td><a href="" class="btn btn-primary" [routerLink]="['/Editproject','item.id']">Edit</a></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

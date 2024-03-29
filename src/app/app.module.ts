@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { AddprojectComponent } from './component/addproject/addproject.component';
+import { ComponentModule } from './component/component.module';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { AddprojectComponent } from './component/addproject/addproject.component
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    ComponentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
