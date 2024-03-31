@@ -1,83 +1,83 @@
 <div>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary py-2">
-      <div class="container-fluid">
-        <a class="navbar-brand d-flex" href="#"><h4><b>Add Project</b></h4></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-            <button class="btn btn-outline-danger mx-3 btn-lg" type="submit" (click)="loginpage()"><b>Logout</b></button>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex" href="#"><h4><b>Add Project</b></h4></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                <button class="btn btn-outline-danger mx-3 btn-lg" type="submit" (click)="loginpage()"><b>Logout</b></button>
+            </div>
         </div>
-      </div>
-    </nav>
-</div>
-
-<div class="formbold-main-wrapper">
-    <div class="formbold-form-wrapper">
-        <form>
-            <div class="flex flex-wrap formbold--mx-3">
-                <div class="w-full formbold-px-3">
-                    <div class="formbold-mb-5">
-                        <label for="Name" class="formbold-form-label"> Project Title </label>
-                        <input type="text" name="name" id="name" [(ngModel)]="formdata.name" class="formbold-form-input" />
+        </nav>
+    
+        <div class="formbold-main-wrapper">
+            <div class="formbold-form-wrapper">
+                <form>
+                    <div class="flex flex-wrap formbold--mx-3">
+                        <div class="w-full formbold-px-3">
+                            <div class="formbold-mb-5">
+                                <label for="Name" class="formbold-form-label"> Project Title </label>
+                                <input type="text" name="name" id="name" [(ngModel)]="formdata.name" class="formbold-form-input" />
+                            </div>
+                        </div>
+                        <!-- <div class="w-full sm:w-half formbold-px-3">
+                            <div class="formbold-mb-5">
+                                <label for="lName" class="formbold-form-label"> Last Name </label>
+                                <input type="text" name="lName" id="lName" placeholder="Last Name"
+                                    class="formbold-form-input" />
+                            </div>
+                        </div> -->
+                        <div class="w-full formbold-px-3">
+                            <div class="formbold-mb-5">
+                                <label for="Desc" class="formbold-form-label">Description</label>
+                                <input type="text" name="description" id="description" [(ngModel)]="formdata.description" class="formbold-form-input" />
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- <div class="w-full sm:w-half formbold-px-3">
+    
                     <div class="formbold-mb-5">
-                        <label for="lName" class="formbold-form-label"> Last Name </label>
-                        <input type="text" name="lName" id="lName" placeholder="Last Name"
-                            class="formbold-form-input" />
+                        <label for="status" class="formbold-form-label">
+                            Status
+                        </label>
+                        <select class="form-select py-2" id="status" aria-label="Project Status" [(ngModel)]="formdata.status" (change)="onStatusChange($event)">
+                            <option value="Registered">Register</option>
+                            <option value="In progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </div>            
+    
+                    <div class="flex flex-wrap formbold--mx-3">
+                        <div class="w-full sm:w-half formbold-px-3">
+                            <div class="formbold-mb-5 w-full">
+                                <label for="date" class="formbold-form-label"> Date </label>
+                                <input type="date" name="date" id="date" [(ngModel)]="formdata.date" class="formbold-form-input" />
+                            </div>
+                        </div>
+                        <div class="w-full sm:w-half formbold-px-3">
+                            <div class="formbold-mb-5">
+                                <label for="time" class="formbold-form-label"> Time </label>
+                                <input type="time" name="time" id="time" [(ngModel)]="formdata.time" class="formbold-form-input" />
+                            </div>
+                        </div>
                     </div>
-                </div> -->
-                <div class="w-full formbold-px-3">
-                    <div class="formbold-mb-5">
-                        <label for="Desc" class="formbold-form-label">Description</label>
-                        <input type="text" name="description" id="description" [(ngModel)]="formdata.description" class="formbold-form-input" />
+    
+                    <!-- <div class="flex formbold-mb-5">
+                        <div class="flex">
+                            <input type="radio" name="radio1" id="radioButton1" class="formbold-radio" />
+                            <label for="radioButton1" class="formbold-radio-label"> Yes </label>
+                        </div>
+                        <div class="flex">
+                            <input type="radio" name="radio1" id="radioButton2" class="formbold-radio" />
+                            <label for="radioButton2" class="formbold-radio-label"> No </label>
+                        </div>
+                    </div> -->
+    
+                    <div>
+                        <button class="formbold-btn" (click)="create()">Submit</button>
                     </div>
-                </div>
+                </form>
             </div>
-
-            <div class="formbold-mb-5">
-                <label for="status" class="formbold-form-label">
-                    Status
-                </label>
-                <select class="form-select py-2" id="status" aria-label="Project Status" [(ngModel)]="formdata.status" (change)="onStatusChange($event)">
-                    <option value="Registered">Register</option>
-                    <option value="In progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                    <option value="Cancelled">Cancelled</option>
-                </select>
-            </div>            
-
-            <div class="flex flex-wrap formbold--mx-3">
-                <div class="w-full sm:w-half formbold-px-3">
-                    <div class="formbold-mb-5 w-full">
-                        <label for="date" class="formbold-form-label"> Date </label>
-                        <input type="date" name="date" id="date" [(ngModel)]="formdata.date" class="formbold-form-input" />
-                    </div>
-                </div>
-                <div class="w-full sm:w-half formbold-px-3">
-                    <div class="formbold-mb-5">
-                        <label for="time" class="formbold-form-label"> Time </label>
-                        <input type="time" name="time" id="time" [(ngModel)]="formdata.time" class="formbold-form-input" />
-                    </div>
-                </div>
-            </div>
-
-            <!-- <div class="flex formbold-mb-5">
-                <div class="flex">
-                    <input type="radio" name="radio1" id="radioButton1" class="formbold-radio" />
-                    <label for="radioButton1" class="formbold-radio-label"> Yes </label>
-                </div>
-                <div class="flex">
-                    <input type="radio" name="radio1" id="radioButton2" class="formbold-radio" />
-                    <label for="radioButton2" class="formbold-radio-label"> No </label>
-                </div>
-            </div> -->
-
-            <div>
-                <button class="formbold-btn" (click)="create()">Submit</button>
-            </div>
-        </form>
-    </div>
+        </div>
 </div>
