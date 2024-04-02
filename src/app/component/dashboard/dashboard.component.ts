@@ -13,12 +13,15 @@ export class DashboardComponent implements OnInit {
 
   allprojects: Projectinterface[]=[];
 
+  totalLength: number = 0;
+
   constructor(private router: Router, private projecjsonservice: ProjectjsonService) {}
 
   ngOnInit(): void {
     this.projecjsonservice.getAll().subscribe((data)=>
     {
       this.allprojects = data;
+      this.totalLength = data.length;
     })
   }
 
@@ -28,6 +31,15 @@ export class DashboardComponent implements OnInit {
 
   addprojects(): void{
     this.router.navigate(['Addproject'])
+  }
+  deleteItem(id: number): void{
+    this.projecjsonservice.delete(id).subscribe((data) => {
+      this.allprojects = this.allprojects.filter(_ => _.id != id)
+        console.log(data)
+    },
+    (error) => {
+      console.log(error)
+    })
   }
 
 }

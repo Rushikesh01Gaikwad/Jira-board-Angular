@@ -1,92 +1,28 @@
 {
   "projectData": [
     {
-      "id": "1",
-      "name": "E-commerce",
-      "description": "It is a shopping cart website.",
-      "status": "Registered",
-      "date": "25/01/2024",
-      "time": "15:20 pm"
-    },
-    {
-      "id": 0,
+      "id": 1,
       "name": "SCIP",
       "description": "it is europe govt project",
-      "status": "",
-      "date": "2022-03-16",
-      "time": "20:35"
+      "status": "In progress",
+      "date": "2022-02-03",
+      "time": "09:43"
     },
     {
-      "id": 0,
-      "name": "ssfgd",
-      "description": "dfg",
-      "status": "",
-      "date": "2024-03-06",
-      "time": "10:39"
-    },
-    {
-      "id": 0,
-      "name": "sdvd",
-      "description": "ddv",
-      "status": "registered",
-      "date": "2024-03-06",
-      "time": "10:42"
-    },
-    {
-      "id": 0,
-      "name": "sdvd",
-      "description": "dsvbx",
-      "status": "registered",
-      "date": "2024-02-27",
-      "time": "10:41"
-    },
-    {
-      "id": 0,
-      "name": "",
-      "description": "",
-      "status": "Registered",
-      "date": "",
-      "time": ""
-    },
-    {
-      "id": 0,
-      "name": "xb",
-      "description": "xcb ",
-      "status": "Registered",
-      "date": "2024-03-12",
-      "time": "00:41"
-    },
-    {
-      "id": 0,
-      "name": "dg",
-      "description": "dgsd",
-      "status": "Registered",
-      "date": "2024-03-05",
-      "time": "10:46"
-    },
-    {
-      "id": 0,
-      "name": "dd",
-      "description": "dd",
-      "status": "Registered",
-      "date": "2024-03-13",
+      "id": 2,
+      "name": "E-commerece",
+      "description": "It is in react language",
+      "status": "In progress",
+      "date": "2024-02-07",
       "time": "02:44"
     },
     {
-      "id": 0,
-      "name": "fc",
-      "description": "ff",
-      "status": "completed",
-      "date": "2024-03-07",
-      "time": "01:47"
-    },
-    {
-      "id": 0,
-      "name": "",
-      "description": "",
-      "status": "in_progress",
-      "date": "",
-      "time": ""
+      "id": 3,
+      "name": "Spider",
+      "description": "It is the atlas group project",
+      "status": "Registered",
+      "date": "2022-03-09",
+      "time": "14:49"
     }
   ]
 }

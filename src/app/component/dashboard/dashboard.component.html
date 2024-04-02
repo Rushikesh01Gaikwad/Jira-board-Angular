@@ -6,6 +6,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+          <button type="button" class="btn btn-outline-success mx-3"><b>View Graph</b></button>
           <a class="btn btn-outline-primary" type="submit" (click)="addprojects()"><b>Add Project</b></a>
           <button class="btn btn-outline-danger mx-3" type="submit" (click)="loginpage()"><b>Logout</b></button>
       </div>
@@ -19,7 +20,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse d-flex justify-content-evenly" id="navbarSupportedContent2"> <!-- Use justify-content-center -->
-              <span class="mx-3" type="submit"><b><h4>Total Projects 1</h4></b></span>
+              <span class="mx-3" type="submit"><b><h4>Total Projects {{totalLength}}</h4></b></span>
           </div>
       </div>
     </nav>
@@ -45,7 +46,8 @@
           <td>{{item.status}}</td>
           <td>{{item.date}}</td>
           <td>{{item.time}}</td>
-          <td><a href="" class="btn btn-primary" [routerLink]="['/Editproject','item.id']">Edit</a></td>
+          <td><a href="" class="btn btn-primary" [routerLink]="['/Editproject',item.id]">Edit</a>
+            <button href="" class="btn btn-danger mx-3" (click)="deleteItem(item.id)">Delete</button></td>
         </tr>
       </tbody>
     </table>

@@ -8,38 +8,39 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrl: './edit.component.scss'
+  styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
 
   constructor(private router: Router, private projecservice: ProjectjsonService, private route: ActivatedRoute) {}
 
-  // formdata : Projectinterface = 
-  // {
-  //   id:0,
-  //   name:'',
-  //   description: '',
-  //   status: 'Registered',
-  //   date: '',
-  //   time: '',
-  // }
+  formdata : Projectinterface = 
+  {
+    id:0,
+    name:'',
+    description: '',
+    status: '',
+    date: '',
+    time: '',
+  }
 
 
   ngOnInit(): void {
-    // this.route.paramMap.subscribe((param)=>
-    // {
-    //   let id = Number(param.get('id'))
-    //   this.getByid(id)
-    // })
+    this.route.paramMap.subscribe((param)=>
+    {
+      let id = Number(param.get('id'))
+      this.getByid(id)
+    })
   }
 
-  // getByid(id: number)
-  // {
-  //   this.projecservice.edit(id).subscribe((data:any)=>
-  //   {
-  //       this.formdata = data;
-  //   })
-  // }
+  getByid(id: number)
+  {
+    this.projecservice.edit(id).subscribe((data)=>
+    {
+        this.formdata = data;
+        console.log(data)
+    })
+  }
 
 
   loginpage(): void{

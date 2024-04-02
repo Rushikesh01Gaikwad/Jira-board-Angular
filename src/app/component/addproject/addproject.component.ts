@@ -27,21 +27,21 @@ export class AddprojectComponent {
     this.formdata.status = event.target.value;
 }
 
-  create()
-  {
+create() {
+  this.projectjsonservice.getLatestId().subscribe(latestId => {
+    this.formdata.id = latestId; // Assign the latest ID to the new record
     this.projectjsonservice.create(this.formdata).subscribe(
       {
-        next:(data)=>
-        {
+        next: (data) => {
           this.router.navigate(['/Dashboard']);
         },
-        error:(er)=>
-        {
-          console.log(er)
+        error: (er) => {
+          console.log(er);
         }
       }
-    )
-  }
+    );
+  });
+}
 
   loginpage(): void{
     this.router.navigate(['/']);
