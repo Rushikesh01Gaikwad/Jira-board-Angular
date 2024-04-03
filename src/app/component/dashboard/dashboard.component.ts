@@ -33,8 +33,8 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['Addproject'])
   }
 
-  viewgraph(): void{
-    this.router.navigate(['Graph'])
+  viewstatus(): void{
+    this.router.navigate(['status'])
   }
   deleteItem(id: number): void{
     this.projecjsonservice.delete(id).subscribe((data) => {

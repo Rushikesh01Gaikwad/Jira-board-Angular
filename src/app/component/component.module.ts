@@ -4,11 +4,13 @@ import { ComponentRoutingModule } from './component-routing.module';
 import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 import { GraphComponent } from './graph/graph.component';
+import { StatusComponent } from './status/status.component';
 
 @NgModule({
   declarations: [
     EditComponent,
-    GraphComponent
+    GraphComponent,
+    StatusComponent
   ],
   imports: [
     CommonModule,

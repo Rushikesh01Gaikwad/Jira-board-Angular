@@ -18,8 +18,8 @@ export class HeaderComponent {
     this.router.navigate(['Addproject']);
   }
 
-  viewgraph(): void{
-    this.router.navigate(['Graph']);
+  viewstatus(): void{
+    this.router.navigate(['status']);
   }
 
 }

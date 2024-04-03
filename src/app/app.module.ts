@@ -11,7 +11,6 @@ import { AddprojectComponent } from './component/addproject/addproject.component
 import { ComponentModule } from './component/component.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatTabsModule} from '@angular/material/tabs';
-import { AuthService } from './component/auth.service';
 
 
 
@@ -34,7 +33,6 @@ import { AuthService } from './component/auth.service';
   ],
   providers: [
     provideAnimationsAsync(),
-    AuthService
   ],
   bootstrap: [AppComponent]
 })

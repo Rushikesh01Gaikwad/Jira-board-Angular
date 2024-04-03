@@ -1,7 +1,7 @@
 <div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex" href="#"><h4><b>Add Project</b></h4></a>
+            <a class="navbar-brand d-flex"><h4><b>Add Project</b></h4></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,7 +37,7 @@
                     </div>
     
                     <div class="formbold-mb-5">
-                        <label for="status" class="formbold-form-label">
+                        <label for="status" class="formbold-form-label-px-1">
                             Status
                         </label>
                         <select class="form-select py-2" id="status" aria-label="Project Status" [(ngModel)]="formdata.status" (change)="onStatusChange($event)">

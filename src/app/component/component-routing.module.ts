@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditComponent } from './edit/edit.component';
 import { GraphComponent } from './graph/graph.component';
 import { LoginComponent } from './login/login.component';
+import { StatusComponent } from './status/status.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: "Graph",
     component:GraphComponent,
+  },
+  {
+    path: "status",
+    component:StatusComponent,
   }
 ];
 
