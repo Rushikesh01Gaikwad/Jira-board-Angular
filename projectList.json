@@ -5,24 +5,16 @@
       "name": "SCIP",
       "description": "it is europe govt project",
       "status": "In progress",
-      "date": "2022-02-03",
-      "time": "09:43"
+      "date": "2021-02-10",
+      "time": "11:37"
     },
     {
       "id": 2,
       "name": "E-commerece",
-      "description": "It is in react language",
-      "status": "In progress",
-      "date": "2024-02-07",
-      "time": "02:44"
-    },
-    {
-      "id": 3,
-      "name": "Spider",
-      "description": "It is the atlas group project",
-      "status": "Registered",
-      "date": "2022-03-09",
-      "time": "14:49"
+      "description": "It is a e-commerce website",
+      "status": "Completed",
+      "date": "2024-01-30",
+      "time": "16:38"
     }
   ]
 }

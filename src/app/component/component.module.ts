@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ComponentRoutingModule } from './component-routing.module';
 import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
+import { GraphComponent } from './graph/graph.component';
 
 @NgModule({
   declarations: [
-    EditComponent
+    EditComponent,
+    GraphComponent
   ],
   imports: [
     CommonModule,
