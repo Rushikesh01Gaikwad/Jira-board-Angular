@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
   viewstatus(): void{
     this.router.navigate(['status'])
   }
+  
   deleteItem(id: number): void{
     this.projecjsonservice.delete(id).subscribe((data) => {
       this.allprojects = this.allprojects.filter(_ => _.id != id)
