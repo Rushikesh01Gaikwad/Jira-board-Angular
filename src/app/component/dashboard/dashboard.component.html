@@ -1,53 +1,54 @@
 <div>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary mat-elevation-z2">
+  <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
-      <a class="navbar-brand d-flex"><h3><b>Dashboard</b></h3></a>
+      <a class="navbar-brand d-flex text-light"><h3><b>Dashboard</b></h3></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-          <button type="button" class="btn btn-outline-success mx-3" (click)="viewstatus()"><b>View Status</b></button>
-          <a class="btn btn-outline-primary" type="submit" (click)="addprojects()"><b>Add Project</b></a>
-          <button class="btn btn-outline-danger mx-3" type="submit" (click)="loginpage()"><b>Logout</b></button>
+          <button type="button" class="btn btn-light mx-3" (click)="viewstatus()"><b>View Status</b></button>
+          <a class="btn btn-light" type="submit" (click)="addprojects()"><b>Add Project</b></a>
+          <button class="btn btn-light mx-3" type="submit" (click)="loginpage()"><b>Logout</b></button>
       </div>
     </div>
   </nav>
   <div class="mt-2">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary mat-elevation-z2">
+    <nav class="navbar navbar-expand-lg navbar-custom">
       <div class="container-fluid">
-          <span class="navbar-brand"><h4><b></b></h4></span>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse d-flex justify-content-evenly" id="navbarSupportedContent2"> <!-- Use justify-content-center -->
-              <span class="mx-3" type="submit"><b><h4>Total Projects {{totalLength}}</h4></b></span>
-          </div>
+        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent2">
+          <span class="mx-3 text-light"><b><h4>Total Projects {{totalLength}}</h4></b></span>
+        </div>
       </div>
     </nav>
   </div>
-  <div class="container mt-4 ">
-    <table class="table">
+  <div class="container mt-4">
+    <table class="table table-hover table-responsive">
       <thead>
         <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Description</th>
-          <th scope="col">Status</th>
-          <th scope="col">Date</th>
-          <th scope="col">Time</th>
-          <th scope="col">Action</th>
+          <th scope="col"><h5>Id</h5></th>
+          <th scope="col"><h5>Name</h5></th>
+          <th scope="col"><h5>Description</h5></th>
+          <th scope="col"><h5>Status</h5></th>
+          <th scope="col"><h5>Date</h5></th>
+          <th scope="col"><h5>Time</h5></th>
+          <th scope="col"><h5>Action</h5></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of allprojects">
+        <tr *ngFor="let item of allprojects" >
           <th scope="row">{{item.id}}</th>
           <td>{{item.name}}</td>
           <td>{{item.description}}</td>
           <td>{{item.status}}</td>
           <td>{{item.date}}</td>
           <td>{{item.time}}</td>
-          <td><a href="" class="btn btn-primary" [routerLink]="['/Editproject',item.id]">Edit</a>
-            <button href="" class="btn btn-danger mx-3" (click)="deleteItem(item.id)">Delete</button></td>
+          <td>
+            <img src='/assets/icons/edit_icon.svg' [routerLink]="['/Editproject',item.id]" class="me-3" alt="edit_icon"/>
+            <img src='/assets/icons/delete-button.svg' (click)="deleteItem(item.id)" class="me-3" width="26" alt="delete-button"/>
+          </td>
         </tr>
       </tbody>
     </table>

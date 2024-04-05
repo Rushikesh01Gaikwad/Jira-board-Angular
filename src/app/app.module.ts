@@ -20,6 +20,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     DashboardComponent,
     AddprojectComponent,
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,

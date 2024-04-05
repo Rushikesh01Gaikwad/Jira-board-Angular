@@ -17,10 +17,13 @@ export class StatusComponent implements AfterViewInit, OnInit {
   constructor(private router: Router, private _liveAnnouncer: LiveAnnouncer, private projectservice: ProjectjsonService) {}
 
   dataSource = new MatTableDataSource<Projectinterface>();
-  
-  count: number = 0;
 
-  displayedColumns: string[] = ['name', 'registered', 'inprogress', 'completed', 'cancelled'];
+  displayedColumns: string[] = ['registered', 'inprogress', 'completed', 'cancelled'];
+
+  reg_count : number = 0;
+  prog_count : number = 0;
+  comp_count : number = 0;
+  canc_count : number = 0;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -28,6 +31,11 @@ export class StatusComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {
     this.projectservice.getAll().subscribe((data: Projectinterface[]) => {
       this.dataSource.data = data;
+      // Calculate count of registered projects
+      this.reg_count = this.dataSource.data.filter(item => item.status === 'Registered').length;
+      this.prog_count = this.dataSource.data.filter(item => item.status === 'In progress').length;
+      this.comp_count = this.dataSource.data.filter(item => item.status === 'Completed').length;
+      this.canc_count = this.dataSource.data.filter(item => item.status === 'cancelled').length;
     });
   }
 
