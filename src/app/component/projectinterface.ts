@@ -1,6 +1,6 @@
 
 export interface Projectinterface {
-    "id": number,
+    id: number,
     "name":string,
     "description":string,
     "status":string,

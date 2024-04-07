@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddprojectComponent } from './addproject/addproject.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { EditComponent } from './edit/edit.component';
 import { GraphComponent } from './graph/graph.component';
 import { LoginComponent } from './login/login.component';
 import { StatusComponent } from './status/status.component';
@@ -19,10 +18,6 @@ const routes: Routes = [
   {
     path:'Addproject',
     component:AddprojectComponent,
-  },
-  {
-    path:'Editproject/:id',
-    component:EditComponent,
   },
   {
     path: "Graph",

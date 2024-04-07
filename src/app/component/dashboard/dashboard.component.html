@@ -46,11 +46,58 @@
           <td>{{item.date}}</td>
           <td>{{item.time}}</td>
           <td>
-            <img src='/assets/icons/edit_icon.svg' [routerLink]="['/Editproject',item.id]" class="me-3" alt="edit_icon"/>
-            <img src='/assets/icons/delete-button.svg' (click)="deleteItem(item.id)" class="me-3" width="26" alt="delete-button"/>
+            <img src='/assets/icons/edit_icon.svg' class="me-3" alt="edit_icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
+            <img src='/assets/icons/delete-button.svg' class="me-3" width="26" alt="delete-button" data-bs-toggle="modal" data-bs-target="#ModalDelete"/>
           </td>
+          <!-- Modal Delete Popup -->
+          <div class="modal fade" id="ModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Delete </h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <span><b>Are you sure to delete this item ?</b></span>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                  <button type="button" class="btn btn-primary"  (click)="deleteItem(item)">Yes</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+
+<!-- Modal edit project-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: whitesmoke;">
+        <span class="modal-title fs-5" id="staticBackdropLabel"><h4>Edit Your Project</h4></span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="formValue">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"><b>Name</b></label>
+            <input type="text" formControlName="title" class="form-control" >
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"><b>Description</b></label>
+            <textarea class="form-control" formControlName="descrip" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer" style="background-color: whitesmoke;">
+          <!-- <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal"><b>Close</b></button> -->
+          <button type="button" class="btn btn-primary btn-lg"><b>Save</b></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

@@ -1,50 +1,71 @@
 import { Component, OnInit } from '@angular/core';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Router } from '@angular/router';
 import { Projectinterface } from '../projectinterface';
 import { ProjectjsonService } from '../projectjson.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
 
-  allprojects: Projectinterface[]=[];
-
+  allprojects: Projectinterface[] = [];
   totalLength: number = 0;
+  formValue!:FormGroup;
 
-  constructor(private router: Router, private projecjsonservice: ProjectjsonService) {}
+  
+  formdata: Projectinterface = {
+    id: 0,
+    name: '',
+    description: '',
+    status: '',
+    date: '',
+    time: ''
+  };
+
+  constructor(
+    private router: Router,
+    private projectjsonservice: ProjectjsonService,
+    private fb :FormBuilder
+  ) {}
 
   ngOnInit(): void {
-    this.projecjsonservice.getAll().subscribe((data)=>
-    {
-      this.allprojects = data;
-      this.totalLength = data.length;
-    })
+    this.formValue=this.fb.group(
+      {
+        title:[''],
+        descrip:['']
+      }
+    )
+    this.loadProjects();
   }
 
-  loginpage(): void{
+  loadProjects(): void {
+    this.projectjsonservice.getAll().subscribe((data) => {
+      this.allprojects = data;
+      this.totalLength = data.length;
+    });
+  }
+
+  loginpage(): void {
     this.router.navigate(['/']);
   }
 
-  addprojects(): void{
-    this.router.navigate(['Addproject'])
+  addprojects(): void {
+    this.router.navigate(['Addproject']);
   }
 
-  viewstatus(): void{
-    this.router.navigate(['status'])
+  viewstatus(): void {
+    this.router.navigate(['status']);
   }
-  
-  deleteItem(id: number): void{
-    this.projecjsonservice.delete(id).subscribe((data) => {
-      this.allprojects = this.allprojects.filter(_ => _.id != id)
-        console.log(data)
-    },
-    (error) => {
-      console.log(error)
+
+  deleteItem(data: any)
+  {
+    this.projectjsonservice.delete(data.id).subscribe((res)=>
+    {
+      this.loadProjects();
     })
   }
-
 }
