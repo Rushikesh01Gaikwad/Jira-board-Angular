@@ -8,6 +8,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule} from '@angular/material/sort';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatSortModule} from '@angular/material/sort';
     MatTabsModule,
     MatTableModule,
     MatSortModule,
+    ReactiveFormsModule,
   ]
 })
 export class ComponentModule { }

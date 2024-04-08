@@ -35,7 +35,7 @@ export class StatusComponent implements AfterViewInit, OnInit {
       this.reg_count = this.dataSource.data.filter(item => item.status === 'Registered').length;
       this.prog_count = this.dataSource.data.filter(item => item.status === 'In progress').length;
       this.comp_count = this.dataSource.data.filter(item => item.status === 'Completed').length;
-      this.canc_count = this.dataSource.data.filter(item => item.status === 'cancelled').length;
+      this.canc_count = this.dataSource.data.filter(item => item.status === 'Cancelled').length;
     });
   }
 

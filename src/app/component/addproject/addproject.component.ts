@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ProjectjsonService } from '../projectjson.service';
 import { Projectinterface } from '../projectinterface';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-addproject',
@@ -15,7 +16,6 @@ export class AddprojectComponent {
 
   formdata : Projectinterface =
   {
-    id:0,
     name:'',
     description: '',
     status: 'Registered',
@@ -29,7 +29,7 @@ export class AddprojectComponent {
 
 create()
   {
-    this.projectjsonservice.create(this.formdata).subscribe(
+    this.projectjsonservice.add(this.formdata).subscribe(
       {
         next:(data)=>
         {

@@ -7,7 +7,7 @@
       </button>
       <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
           <button type="button" class="btn btn-light mx-3" (click)="viewstatus()"><b>View Status</b></button>
-          <a class="btn btn-light" type="submit" (click)="addprojects()"><b>Add Project</b></a>
+          <a class="btn btn-light" type="submit" data-bs-toggle="modal" data-bs-target="#addProject"><b>Add Project</b></a>
           <button class="btn btn-light mx-3" type="submit" (click)="loginpage()"><b>Logout</b></button>
       </div>
     </div>
@@ -28,7 +28,6 @@
     <table class="table table-hover table-responsive">
       <thead>
         <tr>
-          <th scope="col"><h5>Id</h5></th>
           <th scope="col"><h5>Name</h5></th>
           <th scope="col"><h5>Description</h5></th>
           <th scope="col"><h5>Status</h5></th>
@@ -39,7 +38,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of allprojects" >
-          <th scope="row">{{item.id}}</th>
           <td>{{item.name}}</td>
           <td>{{item.description}}</td>
           <td>{{item.status}}</td>
@@ -49,24 +47,6 @@
             <img src='/assets/icons/edit_icon.svg' class="me-3" alt="edit_icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
             <img src='/assets/icons/delete-button.svg' class="me-3" width="26" alt="delete-button" data-bs-toggle="modal" data-bs-target="#ModalDelete"/>
           </td>
-          <!-- Modal Delete Popup -->
-          <div class="modal fade" id="ModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Delete </h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <span><b>Are you sure to delete this item ?</b></span>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                  <button type="button" class="btn btn-primary"  (click)="deleteItem(item)">Yes</button>
-                </div>
-              </div>
-            </div>
-          </div>
         </tr>
       </tbody>
     </table>
@@ -78,10 +58,10 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background-color: whitesmoke;">
-        <span class="modal-title fs-5" id="staticBackdropLabel"><h4>Edit Your Project</h4></span>
+        <span class="modal-title fs-5" id="staticBackdropLabel"><h5>Edit</h5></span>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form [formGroup]="formValue">
+      <form>
         <div class="modal-body">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label"><b>Name</b></label>
@@ -94,10 +74,95 @@
         </div>
         <div class="modal-footer" style="background-color: whitesmoke;">
           <!-- <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal"><b>Close</b></button> -->
-          <button type="button" class="btn btn-primary btn-lg"><b>Save</b></button>
+          <button type="button" class="btn btn-info btn-lg text-light">Save</button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
+
+<!-- Modal Delete Popup -->
+<div class="modal fade" id="ModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span><b>Are you sure to delete this item ?</b></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-info btn-lg text-light">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Add Project Modal -->
+<div class="modal fade" id="addProject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header" style="background-color: whitesmoke;">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Add project</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="formbold-main-wrapper">
+            <div class="formbold-form-wrapper">
+                    <div class="flex flex-wrap formbold--mx-3">
+                        <div class="w-full formbold-px-3">
+                            <div class="formbold-mb-5">
+                                <label for="Name" class="formbold-form-label"> Title </label>
+                                <input type="text" name="name" id="name" [(ngModel)]="formdata.name" formControlName="name" class="formbold-form-input"/>
+                                <span *ngIf="">This field is required</span>
+                            </div>
+                          </div>
+                        <div class="w-full formbold-px-3">
+                            <div class="formbold-mb-5">
+                                <label for="Desc" class="formbold-form-label">Description</label>
+                                <input type="text" name="description" id="description" [(ngModel)]="formdata.description" class="formbold-form-input"/>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="formbold-mb-5">
+                        <label for="status" class="formbold-form-label px-1">
+                            Status
+                        </label>
+                        <select class="form-select py-2" id="status" aria-label="Project Status" [(ngModel)]="formdata.status" (change)="onStatusChange($event)">
+                            <option value="Registered">Register</option>
+                            <option value="In progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </div>            
+    
+                    <div class="flex flex-wrap formbold--mx-3">
+                        <div class="w-full sm:w-half formbold-px-3">
+                            <div class="formbold-mb-5 w-full">
+                                <label for="date" class="formbold-form-label"> Date </label>
+                                <input type="date" name="date" id="date" [(ngModel)]="formdata.date" class="formbold-form-input"/>
+                            </div>
+                        </div>
+                        <div class="w-full sm:w-half formbold-px-3">
+                            <div class="formbold-mb-5">
+                                <label for="time" class="formbold-form-label"> Time </label>
+                                <input type="time" name="time" id="time" [(ngModel)]="formdata.time" class="formbold-form-input" />
+                            </div>
+                        </div>
+                    </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="background-color: whitesmoke;">
+          <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-info btn-lg text-light" data-bs-dismiss="modal" (click)="create()">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
