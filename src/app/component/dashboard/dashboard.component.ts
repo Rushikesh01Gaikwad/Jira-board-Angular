@@ -13,11 +13,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 })
 export class DashboardComponent implements OnInit {
 
-  registerForm!:FormGroup
-  submited = false
   allprojects: Projectinterface[] = [];
   totalLength: number = 0;
-  addprojectform = FormGroup;
+
+  constructor(
+    private router: Router,
+    private projectjsonservice: ProjectjsonService,
+  ) {}
 
   formdata: Projectinterface = {
     name: '',
@@ -27,17 +29,13 @@ export class DashboardComponent implements OnInit {
     time: ''
   };
 
-  constructor(
-    private router: Router,
-    private projectjsonservice: ProjectjsonService,
-  ) {}
+  selectedItem: any;
 
   ngOnInit(): void {
     this.loadProjects();
   }
 
   create(): void {
-    this.submited = true;
     this.projectjsonservice.add(this.formdata).subscribe({
       next: (data) => {
         this.loadProjects();
@@ -64,17 +62,21 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  addprojects(): void {
-    this.router.navigate(['Addproject']);
-  }
-
   viewstatus(): void {
     this.router.navigate(['status']);
   }
 
-  deleteItem(data: any): void {
-    this.projectjsonservice.delete(data.id).subscribe((res) => {
-      this.loadProjects();
+  setSelectedItem(item: any): void {
+    this.selectedItem = item;
+  }
+
+  deleteItem(item: any): void {
+    if (!item) return; // Ensure there is a selected item
+    this.projectjsonservice.delete(item.id).subscribe({
+      next: (res) => {
+        this.loadProjects();
+      },
+      error: console.error // Use console.error to log errors
     });
   }
 

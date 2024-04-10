@@ -1,8 +1,8 @@
 
 export interface Projectinterface {
-    "name":string,
-    "description":string,
-    "status":string,
-    "date":string,
-    "time":string,
+    name:string,
+    description:string,
+    status:string,
+    date:string,
+    time:string,
 }

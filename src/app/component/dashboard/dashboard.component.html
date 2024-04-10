@@ -45,7 +45,7 @@
           <td>{{item.time}}</td>
           <td>
             <img src='/assets/icons/edit_icon.svg' class="me-3" alt="edit_icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
-            <img src='/assets/icons/delete-button.svg' class="me-3" width="26" alt="delete-button" data-bs-toggle="modal" data-bs-target="#ModalDelete"/>
+            <img src='/assets/icons/delete-button.svg' class="me-3" width="26" alt="delete-button" data-bs-toggle="modal" data-bs-target="#ModalDelete" (click)="setSelectedItem(item)"/>
           </td>
         </tr>
       </tbody>
@@ -95,7 +95,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">No</button>
-        <button type="button" class="btn btn-info btn-lg text-light">Yes</button>
+        <button type="button" class="btn btn-info btn-lg text-light" (click)="deleteItem(selectedItem)" data-bs-dismiss="modal">Yes</button>
       </div>
     </div>
   </div>
@@ -117,8 +117,7 @@
                         <div class="w-full formbold-px-3">
                             <div class="formbold-mb-5">
                                 <label for="Name" class="formbold-form-label"> Title </label>
-                                <input type="text" name="name" id="name" [(ngModel)]="formdata.name" formControlName="name" class="formbold-form-input"/>
-                                <span *ngIf="">This field is required</span>
+                                <input type="text" name="name" id="name" [(ngModel)]="formdata.name" class="formbold-form-input"/>
                             </div>
                           </div>
                         <div class="w-full formbold-px-3">

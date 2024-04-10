@@ -22,18 +22,12 @@ export class ProjectjsonService {
 
   update(data: any) 
   {
-    return this.httpClient.put('http://localhost:3000/projectData/', data).pipe(map((res: any)=>
-    {
-      return res;
-    }))
+    return this.httpClient.put<Projectinterface>('http://localhost:3000/projectData/', data)
   }
 
   delete(data :any)
   {
-    return this.httpClient.delete("http://localhost:3000/projectData/"+data).pipe(map((res: any)=>
-    {
-      return res;
-    }));
+    return this.httpClient.delete(`http://localhost:3000/projectData/${data}`);
   }
 
 }
