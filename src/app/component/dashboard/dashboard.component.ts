@@ -68,7 +68,21 @@ export class DashboardComponent implements OnInit {
 
   setSelectedItem(item: any): void {
     this.selectedItem = item;
+    this.formdata = { ...item };
   }
+
+  editItem(item: any): void {
+    if (!item) return; // Ensure there is a selected item
+    this.selectedItem.name = this.formdata.name;
+    this.selectedItem.description = this.formdata.description;
+    this.projectjsonservice.update(this.selectedItem).subscribe({
+      next: (res) => {
+        this.loadProjects();
+      },
+      error: console.error // Use console.error to log errors
+    });
+  }
+  
 
   deleteItem(item: any): void {
     if (!item) return; // Ensure there is a selected item

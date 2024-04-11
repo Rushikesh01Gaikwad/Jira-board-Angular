@@ -14,42 +14,88 @@ import { Projectinterface } from '../projectinterface';
 })
 export class StatusComponent implements AfterViewInit, OnInit {
 
-  constructor(private router: Router, private _liveAnnouncer: LiveAnnouncer, private projectservice: ProjectjsonService) {}
-
   dataSource = new MatTableDataSource<Projectinterface>();
-
   displayedColumns: string[] = ['registered', 'inprogress', 'completed', 'cancelled'];
-
-  reg_count : number = 0;
-  prog_count : number = 0;
-  comp_count : number = 0;
-  canc_count : number = 0;
+  reg_count = 0;
+  prog_count = 0;
+  comp_count = 0;
+  canc_count = 0;
+  formdata: Projectinterface = {
+    name: '',
+    description: '',
+    status: '',
+    date: '',
+    time: ''
+  };
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  constructor(
+    private router: Router,
+    private _liveAnnouncer: LiveAnnouncer,
+    private projectservice: ProjectjsonService
+  ) {}
+
   ngOnInit(): void {
-    this.projectservice.getAll().subscribe((data: Projectinterface[]) => {
-      this.dataSource.data = data;
-      // Calculate count of registered projects
-      this.reg_count = this.dataSource.data.filter(item => item.status === 'Registered').length;
-      this.prog_count = this.dataSource.data.filter(item => item.status === 'In progress').length;
-      this.comp_count = this.dataSource.data.filter(item => item.status === 'Completed').length;
-      this.canc_count = this.dataSource.data.filter(item => item.status === 'Cancelled').length;
-    });
+    this.loadProjects();
   }
 
-  ngAfterViewInit() {
+  onStatusChange(event: any): void {
+    this.formdata.status = event.target.value;
+  }
+
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  announceSortChange(sortState: Sort) {
+  announceSortChange(sortState: Sort): void {
     if (sortState.direction) {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  create(): void {
+    this.projectservice.add(this.formdata).subscribe({
+      next: () => {
+        this.loadProjects();
+        this.clearFormData();
+      },
+      error: (error) => {
+        console.error('Error adding project:', error);
+      }
+    });
+  }
+
+  loadProjects(): void {
+    this.projectservice.getAll().subscribe((data: Projectinterface[]) => {
+      this.dataSource.data = data;
+      this.updateCounts();
+    });
+  }
+
+  clearFormData(): void {
+    this.formdata = {
+      name: '',
+      description: '',
+      status: '',
+      date: '',
+      time: ''
+    };
+  }
+
+  updateCounts(): void {
+    this.reg_count = this.getCountByStatus('Registered');
+    this.prog_count = this.getCountByStatus('In progress');
+    this.comp_count = this.getCountByStatus('Completed');
+    this.canc_count = this.getCountByStatus('Cancelled');
+  }
+
+  getCountByStatus(status: string): number {
+    return this.dataSource.data.filter(item => item.status === status).length;
   }
 
   viewgraph(): void {

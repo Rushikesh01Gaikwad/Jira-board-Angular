@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
           <button type="button" class="btn btn-light mx-3" (click)="viewstatus()"><b>View Status</b></button>
           <a class="btn btn-light" type="submit" data-bs-toggle="modal" data-bs-target="#addProject"><b>Add Project</b></a>
-          <button class="btn btn-light mx-3" type="submit" (click)="loginpage()"><b>Logout</b></button>
+          <button class="btn btn-light mx-3" type="submit" (click)="loginpage()"><b>Logout</b> <img src='/assets/icons/logout.svg' width="26vw" alt="logout_svg"/></button>
       </div>
     </div>
   </nav>
@@ -44,7 +44,7 @@
           <td>{{item.date}}</td>
           <td>{{item.time}}</td>
           <td>
-            <img src='/assets/icons/edit_icon.svg' class="me-3" alt="edit_icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
+            <img src='/assets/icons/edit_icon.svg' class="me-3" alt="edit_icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="setSelectedItem(item)"/>
             <img src='/assets/icons/delete-button.svg' class="me-3" width="26" alt="delete-button" data-bs-toggle="modal" data-bs-target="#ModalDelete" (click)="setSelectedItem(item)"/>
           </td>
         </tr>
@@ -65,16 +65,16 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label"><b>Name</b></label>
-            <input type="text" formControlName="title" class="form-control" >
+            <input type="text" formControlName="title" class="form-control" [(ngModel)]="formdata.name" name="name">
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label"><b>Description</b></label>
-            <textarea class="form-control" formControlName="descrip" rows="3"></textarea>
+            <textarea class="form-control" formControlName="description" rows="3" [(ngModel)]="formdata.description" name="description"></textarea>
           </div>
         </div>
         <div class="modal-footer" style="background-color: whitesmoke;">
           <!-- <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal"><b>Close</b></button> -->
-          <button type="button" class="btn btn-info btn-lg text-light">Save</button>
+          <button type="button" class="btn btn-info btn-lg text-light" (click)="editItem(selectedItem)">Save</button>
         </div>
       </form>
     </div>

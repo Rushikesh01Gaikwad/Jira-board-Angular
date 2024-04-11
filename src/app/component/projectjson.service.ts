@@ -22,7 +22,7 @@ export class ProjectjsonService {
 
   update(data: any) 
   {
-    return this.httpClient.put<Projectinterface>('http://localhost:3000/projectData/', data)
+    return this.httpClient.put<Projectinterface>('http://localhost:3000/projectData/' + data.id, data);
   }
 
   delete(data :any)
