@@ -10,7 +10,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { AddprojectComponent } from './component/addproject/addproject.component';
 import { ComponentModule } from './component/component.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
+import { ChartModule } from 'angular-highcharts';
 
 
 @NgModule({
@@ -29,6 +29,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     CommonModule,
     HttpClientModule,
     ComponentModule,
+    ChartModule,                                
   ],
   providers: [
     provideAnimationsAsync(),

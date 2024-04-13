@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Projectinterface } from '../projectinterface';
 import { ProjectjsonService } from '../projectjson.service';
-import { FormBuilder, FormGroup, Validator, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,10 +15,12 @@ export class DashboardComponent implements OnInit {
 
   allprojects: Projectinterface[] = [];
   totalLength: number = 0;
+  editForm!: FormGroup;
 
   constructor(
     private router: Router,
     private projectjsonservice: ProjectjsonService,
+    private formBuilder: FormBuilder,
   ) {}
 
   formdata: Projectinterface = {
@@ -33,6 +35,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProjects();
+    this.editForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required]
+  });
   }
 
   create(): void {
@@ -69,19 +75,27 @@ export class DashboardComponent implements OnInit {
   setSelectedItem(item: any): void {
     this.selectedItem = item;
     this.formdata = { ...item };
+    this.editForm.patchValue({
+      name: item.name,
+      description: item.description
+  });
   }
 
-  editItem(item: any): void {
-    if (!item) return; // Ensure there is a selected item
-    this.selectedItem.name = this.formdata.name;
-    this.selectedItem.description = this.formdata.description;
-    this.projectjsonservice.update(this.selectedItem).subscribe({
-      next: (res) => {
-        this.loadProjects();
-      },
-      error: console.error // Use console.error to log errors
+  editItem(): void {
+    const editedItem = {
+        ...this.selectedItem,
+        name: this.editForm.value.name,
+        description: this.editForm.value.description
+    };
+
+    this.projectjsonservice.update(editedItem).subscribe({
+        next: (res) => {
+            this.loadProjects();
+        },
+        error: console.error // Use console.error to log errors
     });
   }
+
   
 
   deleteItem(item: any): void {

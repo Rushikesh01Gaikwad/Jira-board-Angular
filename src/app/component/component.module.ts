@@ -9,6 +9,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule} from '@angular/material/sort';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatTableModule,
     MatSortModule,
     ReactiveFormsModule,
+    ChartModule,
   ]
 })
 export class ComponentModule { }

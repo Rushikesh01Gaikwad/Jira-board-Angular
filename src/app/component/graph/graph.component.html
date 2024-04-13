@@ -12,7 +12,12 @@
           </div>
         </div>
       </nav>
-      <div>
-          <h3 class="container">View your graphs</h3>
+      <div class="graph-container">
+        <div class="pie-container">
+          <div class="pie" [chart]="pieChart"></div>
+        </div>
+        <div class="bar-container">
+          <div class="bar" [chart]="barChart"></div>
+        </div>
       </div>
 </div>
