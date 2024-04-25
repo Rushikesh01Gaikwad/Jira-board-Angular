@@ -7,18 +7,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { AddprojectComponent } from './component/addproject/addproject.component';
-import { ComponentModule } from './component/component.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ChartModule } from 'angular-highcharts';
-
+import { NavbarComponent } from './component/navbar/navbar.component';
+import { GraphComponent } from './component/graph/graph.component';
+import { StatusComponent } from './component/status/status.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatTabsModule} from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule} from '@angular/material/sort';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    AddprojectComponent,
+    NavbarComponent,
+    GraphComponent,
+    StatusComponent,
+
   ],
   
   imports: [
@@ -28,8 +36,12 @@ import { ChartModule } from 'angular-highcharts';
     FormsModule,
     CommonModule,
     HttpClientModule,
-    ComponentModule,
-    ChartModule,                                
+    ChartModule,  
+    MatPaginatorModule,
+    MatTabsModule,
+    MatTableModule,
+    MatSortModule,    
+    MatSidenavModule                         
   ],
   providers: [
     provideAnimationsAsync(),
