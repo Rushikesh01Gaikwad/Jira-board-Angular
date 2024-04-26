@@ -1,5 +1,5 @@
 <div>
-      <nav class="navbar navbar-expand-lg navbar-custom">
+  <!-- <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
           <a class="navbar-brand d-flex text-light"><h3><b>Graph</b></h3></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,13 +10,16 @@
               <button class="btn btn-light mx-3" type="submit" (click)="loginpage()"><b>Logout</b></button>
           </div>
         </div>
-      </nav>
-      <div class="graph-container">
-        <div class="pie-container">
-          <div class="pie" [chart]="pieChart"></div>
-        </div>
-        <div class="bar-container">
-          <!-- <div class="bar" [chart]="barChart"></div> -->
-        </div>
-      </div>
+      </nav> -->
+  <app-navbar></app-navbar>
+  <app-cards></app-cards>
+  <div class="graph-container">
+    <app-sidebar></app-sidebar>
+    <div class="pie-container">
+      <div class="pie" [chart]="pieChart"></div>
+    </div>
+    <div class="bar-container">
+      <div class="bar" [chart]="barChart"></div>
+    </div>
+  </div>
 </div>

@@ -17,6 +17,13 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule} from '@angular/material/sort';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { AddprojectComponent } from './component/addproject/addproject.component';
+import { SidebarComponent } from './component/sidebar/sidebar.component';
+import { CardsComponent } from './component/cards/cards.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -26,6 +33,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     NavbarComponent,
     GraphComponent,
     StatusComponent,
+    AddprojectComponent,
+    SidebarComponent,
+    CardsComponent,
 
   ],
   
@@ -41,7 +51,11 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatTabsModule,
     MatTableModule,
     MatSortModule,    
-    MatSidenavModule                         
+    MatSidenavModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,   
   ],
   providers: [
     provideAnimationsAsync(),

@@ -1,5 +1,5 @@
 .navbar-custom {
-  background-color: #1887c7; /* Set navbar background color */
+  background-color: #ce641e; /* Set navbar background color */
 }
 
 .navbar-custom .navbar-brand {
@@ -79,7 +79,7 @@
     resize: none;
   }
   .formbold-form-input:focus {
-    border-color: #6a64f1;
+    border-color: #ce641e;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
   }
 
@@ -90,7 +90,7 @@
     padding: 14px 32px;
     border: none;
     font-weight: 600;
-    background-color: #6a64f1;
+    background-color: #ce641e;
     color: white;
     cursor: pointer;
   }
@@ -127,35 +127,20 @@
     padding-right: 20px;
   }
 
-  .sidebar-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    width: 70px; /* Width of the sidebar */
-    background-color: #1887c7;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-    height: 80vh;
-  }
-  
-  .sidebar-containt{
-    margin-left: 0.7vw;
-  }
-
-
   .dashboard-containt{
     display: flex;
   }
 
   .sidecontaint{
     width: 5%;
+    margin-top: 5.85vw;
   }
 
   .main-containt{
     width: 95%;
     margin-left: 6vw;
     margin-right: 10vw;
-    margin-top: 3vw;
+    margin-top: 1.5vw;
   }
 
   @media (min-width: 540px) {

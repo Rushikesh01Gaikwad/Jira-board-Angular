@@ -4,6 +4,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { GraphComponent } from './component/graph/graph.component';
 import { LoginComponent } from './component/login/login.component';
 import { StatusComponent } from './component/status/status.component';
+import { AddprojectComponent } from './component/addproject/addproject.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: "status",
     component:StatusComponent,
+  },
+  {
+    path: "add",
+    component:AddprojectComponent,
   }
 ];
 

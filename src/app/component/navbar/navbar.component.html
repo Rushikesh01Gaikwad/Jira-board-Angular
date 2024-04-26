@@ -10,50 +10,10 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-                <button class="btn btn-light mx-3" type="submit" (click)="loginpage()"><b>Logout</b> <img
-                        src='/assets/icons/logout.svg' width="26vw" alt="logout_svg" /></button>
+                <a [routerLink]="['/']" >
+                    <img src='/assets/icons/logout.svg' width="35" alt="logout_svg"/>
+                </a>
             </div>
         </div>
     </nav>
-</div>
-<div class="container">
-    <div class="cardDiv">
-        <div class="row">
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h6>Total</h6><h5>{{totalLength}}</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h6>Registered</h6><h5>{{reg_count}}</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h6>In Progress</h6><h5>{{prog_count}}</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h6>Completed</h6><h5>{{comp_count}}</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h6>Cancelled</h6><h5>{{canc_count}}</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>

@@ -1,0 +1,41 @@
+.flex{
+    display: flex;
+}
+
+.sidecontaint{
+    width: 5%;
+  }
+  
+  .sidebar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    width: 70px; /* Width of the sidebar */
+    background-color: #37c28c;
+    height: 60vh;
+  }
+  
+  .sidebar-containt{
+    margin-left: 0.7vw;
+  }
+
+  .margin-sidebar{
+    margin-top: 5.85vw;
+  }
+
+  .main-containt{
+    width: 95%;
+    margin-left: 6vw;
+    margin-right: 10vw;
+    margin-top: 1.5vw;
+  }
+
+  .adjustWidth{
+    width: 25vw;
+  }
+
+  .btn-cls{
+    background-color: #37c28c;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    float:right;
+}
