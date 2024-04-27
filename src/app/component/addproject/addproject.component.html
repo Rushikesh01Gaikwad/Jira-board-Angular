@@ -6,77 +6,80 @@
         </div>
         <div class="container">
             <div class="main-containt">
-                <div class="flex">
-                    <p class="mx-3">
-                        <mat-form-field appearance="outline" class="adjustWidth">
-                            <mat-label>Name</mat-label>
-                            <input matInput>
-                            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-                            <!-- <mat-hint>Hint</mat-hint> -->
-                        </mat-form-field>
-                    </p>
-                    <p class="mx-3">
-                        <mat-form-field appearance="outline" class="adjustWidth">
-                            <mat-label>Description</mat-label>
-                            <textarea matInput></textarea>
-                        </mat-form-field>
-                    </p>
-                </div>
-                <div class="flex">
-                    <p class="mx-3">
-                        <mat-form-field appearance="outline" class="adjustWidth">
-                            <mat-label>Location</mat-label>
-                            <mat-select>
-                                <mat-option value="one">Maharastra</mat-option>
-                                <mat-option value="one">Delhi</mat-option>
-                                <mat-option value="one">Punjab</mat-option>
-                                <mat-option value="one">Karnataka</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </p>
-                    <p class="mx-3">
-                        <mat-form-field appearance="outline" class="adjustWidth">
-                            <mat-label>Department</mat-label>
-                            <mat-select>
-                                <mat-option value="one">Apps & Software</mat-option>
-                                <mat-option value="two">Data</mat-option>
-                                <mat-option value="two">Embeded</mat-option>
-                                <mat-option value="two">Devops</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </p>
-                </div>
-                <div class="flex">
-                    <p class="mx-3">
-                        <mat-form-field appearance="outline" class="adjustWidth">
-                            <mat-label>Date</mat-label>
-                            <input matInput>
-                            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-                            <!-- <mat-hint>Hint</mat-hint> -->
-                        </mat-form-field>
-                    </p>
-                    <p class="mx-3">
-                        <mat-form-field appearance="outline" class="adjustWidth">
-                            <mat-label>Time</mat-label>
-                            <input matInput>
-                            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-                            <!-- <mat-hint>Hint</mat-hint> -->
-                        </mat-form-field>
-                    </p>
-                </div>
-                <div class="flex">
-                    <p class="mx-3">
-                        <mat-form-field appearance="outline" class="adjustWidth">
-                            <mat-label>Status</mat-label>
-                            <mat-select>
-                                <mat-option value="one">Register</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </p>
-                    <p class="mx-3">
-                        <button class="btn btn-light text-light btn-lg btn-cls" type="submit"><b>Save </b></button>
-                    </p>
-                </div>
+                <form [formGroup]="projectForm" (ngSubmit)="create()">
+                    <div class="flex">
+                        <p class="mx-3">
+                            <mat-form-field appearance="outline" class="adjustWidth">
+                                <mat-label>Name</mat-label>
+                                <input matInput type="text" name="name" id="name" formControlName="name">
+                                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                                <!-- <mat-hint>Hint</mat-hint> -->
+                            </mat-form-field>
+                        </p>
+                        <p class="mx-3">
+                            <mat-form-field appearance="outline" class="adjustWidth">
+                                <mat-label>Description</mat-label>
+                                <textarea matInput type="text" name="description" formControlName="description" id="description"></textarea>
+                            </mat-form-field>
+                        </p>
+                        <p class="mx-3">
+                            <mat-form-field appearance="outline" class="adjustWidth">
+                                <mat-label>Location</mat-label>
+                                <mat-select formControlName="location" id="location"
+                                (change)="onStatusChange($event)">
+                                    <mat-option value="Maharastra">Maharastra</mat-option>
+                                    <mat-option value="Delhi">Delhi</mat-option>
+                                    <mat-option value="Punjab">Punjab</mat-option>
+                                    <mat-option value="Karnataka">Karnataka</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </p>
+                    </div>
+                    <div class="flex">
+                        <p class="mx-3">
+                            <mat-form-field appearance="outline" class="adjustWidth">
+                                <mat-label>Department</mat-label>
+                                <mat-select formControlName="department" id="department"
+                                (change)="onStatusChange($event)">
+                                    <mat-option value="pps & Software">Apps & Software</mat-option>
+                                    <mat-option value="Data">Data</mat-option>
+                                    <mat-option value="Devops">Devops</mat-option>
+                                    <mat-option value="Testing">Testing</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </p>
+                        <p class="mx-3">
+                            <mat-form-field appearance="outline" class="adjustWidth">
+                                <mat-label>Date</mat-label>
+                                <input matInput type="date" formControlName="date" id="date">
+                                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                                <!-- <mat-hint>Hint</mat-hint> -->
+                            </mat-form-field>
+                        </p>
+                        <p class="mx-3">
+                            <mat-form-field appearance="outline" class="adjustWidth">
+                                <mat-label>Time</mat-label>
+                                <input matInput type="time" formControlName="time" id="time">
+                                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                                <!-- <mat-hint>Hint</mat-hint> -->
+                            </mat-form-field>
+                        </p>
+                    </div>
+                    <div class="flex">
+                        <p class="mx-3">
+                            <mat-form-field appearance="outline" class="adjustWidth">
+                                <mat-label>Status</mat-label>
+                                <mat-select formControlName="status" id="status"
+                                (change)="onStatusChange($event)">
+                                    <mat-option value="Registered">Register</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </p>
+                        <p class="mx-3">
+                            <button class="btn btn-light text-light btn-lg btn-cls" type="submit" (click)="create()"><b>Save </b></button>
+                        </p>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

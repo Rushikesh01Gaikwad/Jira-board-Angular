@@ -23,6 +23,8 @@ export class StatusComponent implements AfterViewInit, OnInit {
   formdata: Projectinterface = {
     name: '',
     description: '',
+    location: '',
+    department: '',
     status: '',
     date: '',
     time: ''
@@ -81,6 +83,8 @@ export class StatusComponent implements AfterViewInit, OnInit {
     this.formdata = {
       name: '',
       description: '',
+      location: '',
+      department: '',
       status: '',
       date: '',
       time: ''

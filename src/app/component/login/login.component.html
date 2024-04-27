@@ -10,7 +10,7 @@
 					<i class="login__icon fas fa-lock"></i>
 					<input type="password" class="login__input" name="password" [(ngModel)]="password" placeholder="Password" required>
 				</div>
-				<button class="button login__submit" (click)="dashboardPage()">
+				<button class="button login__submit" [routerLink]="['Graph']">
 					<span class="button__text">Log In Now</span>
 					<i class="button__icon fas fa-chevron-right"></i>
 				</button>				

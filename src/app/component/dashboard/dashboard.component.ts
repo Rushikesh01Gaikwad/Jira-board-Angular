@@ -26,6 +26,8 @@ export class DashboardComponent implements OnInit {
   formdata: Projectinterface = {
     name: '',
     description: '',
+    location: '',
+    department: '',
     status: '',
     date: '',
     time: ''
@@ -114,6 +116,8 @@ export class DashboardComponent implements OnInit {
       name: '',
       description: '',
       status: '',
+      location: '',
+      department:'',
       date: '',
       time: ''
     };
