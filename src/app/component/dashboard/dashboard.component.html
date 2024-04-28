@@ -52,6 +52,9 @@
             <th scope="col">
               <h5>Action</h5>
             </th>
+            <th scope="col">
+              <h5>Change Status</h5>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -66,6 +69,11 @@
                 data-bs-target="#staticBackdrop" (click)="setSelectedItem(item)" />
               <img src='/assets/icons/delete-button.svg' class="me-3" width="26" alt="delete-button"
                 data-bs-toggle="modal" data-bs-target="#ModalDelete" (click)="setSelectedItem(item)" />
+            </td>
+            <td>
+                <button type="button" class="btn btn-warning btn-sm"><b>In Progress</b></button>
+                <button type="button" class="btn btn-success mx-4 btn-sm"><b>Completed</b></button>
+                <button type="button" class="btn btn-danger btn-sm"><b>Cancelled</b></button>
             </td>
           </tr>
         </tbody>
@@ -97,8 +105,8 @@
           </div>
         </div>
         <div class="modal-footer" style="background-color: whitesmoke;">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-info text-light" (click)="editItem()"
+          <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success btn-lg text-light" (click)="editItem()"
             data-bs-dismiss="modal">Update</button>
         </div>
       </form>
@@ -111,16 +119,16 @@
 <div class="modal fade" id="ModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background-color: whitesmoke;">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Delete </h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <span><b>Are you sure to delete this item ?</b></span>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" style="background-color: whitesmoke;">
         <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">No</button>
-        <button type="button" class="btn btn-info btn-lg text-light" (click)="deleteItem(selectedItem)"
+        <button type="button" class="btn btn-success btn-lg text-light" (click)="deleteItem(selectedItem)"
           data-bs-dismiss="modal">Yes</button>
       </div>
     </div>
@@ -128,7 +136,7 @@
 </div>
 
 <!--Add Project Modal -->
-<div class="modal fade" id="addProject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<!-- <div class="modal fade" id="addProject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
   aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -194,4 +202,4 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->

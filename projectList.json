@@ -57,66 +57,6 @@
       "status": "Register",
       "date": "2003-05-20",
       "time": "15:42"
-    },
-    {
-      "id": "2c63",
-      "name": "gjfgdg",
-      "description": "dfhndcg",
-      "department": "Testing",
-      "location": "Karnataka",
-      "status": "Registered",
-      "date": "2024-04-27",
-      "time": "12:56"
-    },
-    {
-      "id": "a7d7",
-      "name": "gjfgdg",
-      "description": "dfhndcg",
-      "department": "Testing",
-      "location": "Karnataka",
-      "status": "Registered",
-      "date": "2024-04-27",
-      "time": "12:56"
-    },
-    {
-      "id": "f6f3",
-      "name": "dfghj",
-      "description": "dfghjkl",
-      "department": "Testing",
-      "location": "Punjab",
-      "status": "Registered",
-      "date": "2024-04-27",
-      "time": "12:58"
-    },
-    {
-      "id": "39e4",
-      "name": "dfghj",
-      "description": "dfghjkl",
-      "department": "Testing",
-      "location": "Punjab",
-      "status": "Registered",
-      "date": "2024-04-27",
-      "time": "12:58"
-    },
-    {
-      "id": "33a9",
-      "name": "ghji",
-      "description": "ghjk",
-      "department": "Devops",
-      "location": "Punjab",
-      "status": "Registered",
-      "date": "2024-04-27",
-      "time": "13:02"
-    },
-    {
-      "id": "a51e",
-      "name": "ghji",
-      "description": "ghjk",
-      "department": "Devops",
-      "location": "Punjab",
-      "status": "Registered",
-      "date": "2024-04-27",
-      "time": "13:02"
     }
   ],
   "signIn": [
