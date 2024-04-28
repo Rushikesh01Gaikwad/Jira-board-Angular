@@ -47,7 +47,6 @@ export class DashboardComponent implements OnInit {
     this.projectjsonservice.add(this.formdata).subscribe({
       next: (data) => {
         this.loadProjects();
-        this.clearFormData(); // Clear form data after successful creation
       },
       error: (er) => {
         console.log(er);
@@ -110,16 +109,21 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  clearFormData(): void {
-    // Reset form data object to initial state
-    this.formdata = {
-      name: '',
-      description: '',
-      status: '',
-      location: '',
-      department:'',
-      date: '',
-      time: ''
+  changeStatus(item: any, newStatus: string): void {
+    // Prepare the updated item with new status
+    const updatedItem = {
+        ...item,
+        status: newStatus
     };
-  }
+
+    // Call the service's update method with the updated item
+    this.projectjsonservice.update(updatedItem).subscribe({
+        next: (res) => {
+            // Reload projects after successful update
+            this.loadProjects();
+        },
+        error: console.error // Log errors to console
+    });
+}
+
 }

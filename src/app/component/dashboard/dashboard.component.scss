@@ -141,6 +141,15 @@
     margin-left: 4vw;
     margin-right: 4vw;
     margin-top: 1.5vw;
+    height: 37vw; /* Set the desired height */
+    overflow: auto;
+  }
+
+  .main-containt thead {
+    position: sticky; /* Fix the header position */
+    top: 0; /* Place the header at the top */
+    background-color: #f8f9fa; /* Background color for the header */
+    z-index: 1; /* Ensure header is above other content */
   }
 
   @media (min-width: 540px) {

@@ -4,12 +4,12 @@
             <a class="navbar-brand d-flex text-light">
                 <h3><b>Dashboard</b></h3>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <form class="d-flex flex-grow-1 container" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 100%;">
+            </form>
             <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                <img class="mx-2" src="/assets/icons/mail.svg" width="35" alt="user"/>
+                <img class="mx-3" src="/assets/icons/user.svg" width="35" alt="user"/>
                 <a [routerLink]="['/']" >
                     <img src='/assets/icons/logout.svg' width="35" alt="logout_svg"/>
                 </a>

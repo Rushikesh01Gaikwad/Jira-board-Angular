@@ -71,9 +71,9 @@
                 data-bs-toggle="modal" data-bs-target="#ModalDelete" (click)="setSelectedItem(item)" />
             </td>
             <td>
-                <button type="button" class="btn btn-warning btn-sm"><b>In Progress</b></button>
-                <button type="button" class="btn btn-success mx-4 btn-sm"><b>Completed</b></button>
-                <button type="button" class="btn btn-danger btn-sm"><b>Cancelled</b></button>
+              <button type="button" class="btn btn-warning btn-sm" (click)="changeStatus(item, 'In progress')"><b>In Progress</b></button>
+              <button type="button" class="btn btn-success mx-4 btn-sm" (click)="changeStatus(item, 'Completed')"><b>Completed</b></button>
+              <button type="button" class="btn btn-danger btn-sm" (click)="changeStatus(item, 'Cancelled')"><b>Cancelled</b></button>              
             </td>
           </tr>
         </tbody>
