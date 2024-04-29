@@ -12,7 +12,7 @@ import { ChartModule } from 'angular-highcharts';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { GraphComponent } from './component/graph/graph.component';
 import { StatusComponent } from './component/status/status.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, MatPaginator} from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule} from '@angular/material/sort';
@@ -59,6 +59,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatSelectModule,   
     MatDividerModule,
     MatButtonModule,
+    MatPaginator,
   ],
   providers: [
     provideAnimationsAsync(),

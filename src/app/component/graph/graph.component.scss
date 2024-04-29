@@ -2,13 +2,22 @@
   display: flex;
 }
 
-.pie-container {
-  width: 45%;
+.flex {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.graph-containt{
+  display: flex;
   margin-top: 4vw;
 }
 
+.pie-container {
+  width: 50%;
+}
+
 .bar-container {
-  width: 45%;
-  margin-top: 4vw;
-  margin-right: 10vw;
+  width: 50%;
+  margin-right: 3vw;
 }

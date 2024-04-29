@@ -1,9 +1,7 @@
 <div>
     <app-navbar></app-navbar>
     <div class="flex">
-        <div class="margin-sidebar">
-            <app-sidebar></app-sidebar>
-        </div>
+        <app-sidebar></app-sidebar>
         <div class="container">
             <div class="main-containt">
                 <form [formGroup]="projectForm" (ngSubmit)="create()">
@@ -19,14 +17,14 @@
                         <p class="mx-3">
                             <mat-form-field appearance="outline" class="adjustWidth">
                                 <mat-label>Description</mat-label>
-                                <textarea matInput type="text" name="description" formControlName="description" id="description"></textarea>
+                                <textarea matInput type="text" name="description" formControlName="description"
+                                    id="description"></textarea>
                             </mat-form-field>
                         </p>
                         <p class="mx-3">
                             <mat-form-field appearance="outline" class="adjustWidth">
                                 <mat-label>Location</mat-label>
-                                <mat-select formControlName="location" id="location"
-                                (change)="onStatusChange($event)">
+                                <mat-select formControlName="location" id="location" (change)="onStatusChange($event)">
                                     <mat-option value="Maharastra">Maharastra</mat-option>
                                     <mat-option value="Delhi">Delhi</mat-option>
                                     <mat-option value="Punjab">Punjab</mat-option>
@@ -40,7 +38,7 @@
                             <mat-form-field appearance="outline" class="adjustWidth">
                                 <mat-label>Department</mat-label>
                                 <mat-select formControlName="department" id="department"
-                                (change)="onStatusChange($event)">
+                                    (change)="onStatusChange($event)">
                                     <mat-option value="pps & Software">Apps & Software</mat-option>
                                     <mat-option value="Data">Data</mat-option>
                                     <mat-option value="Devops">Devops</mat-option>
@@ -69,8 +67,7 @@
                         <p class="mx-3">
                             <mat-form-field appearance="outline" class="adjustWidth">
                                 <mat-label>Status</mat-label>
-                                <mat-select formControlName="status" id="status"
-                                (change)="onStatusChange($event)">
+                                <mat-select formControlName="status" id="status" (change)="onStatusChange($event)">
                                     <mat-option value="Registered">Register</mat-option>
                                 </mat-select>
                             </mat-form-field>

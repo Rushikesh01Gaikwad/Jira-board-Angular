@@ -12,14 +12,22 @@
         </div>
       </nav> -->
   <app-navbar></app-navbar>
-  <app-cards></app-cards>
   <div class="graph-container">
-    <app-sidebar></app-sidebar>
-    <div class="pie-container">
-      <div class="pie" [chart]="pieChart"></div>
+    <div>
+      <app-sidebar></app-sidebar>
     </div>
-    <div class="bar-container">
-      <div class="bar" [chart]="barChart"></div>
+    <div class="flex">
+      <div>
+        <app-cards></app-cards>
+      </div>
+      <div class="graph-containt">
+        <div class="pie-container">
+          <div class="pie" [chart]="pieChart"></div>
+        </div>
+        <div class="bar-container">
+          <div class="bar" [chart]="barChart"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

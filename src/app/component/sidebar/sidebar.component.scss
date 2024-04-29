@@ -2,17 +2,13 @@
     display: flex;
 }
 
-.sidecontaint{
-    width: 5%;
-  }
-  
   .sidebar-container {
     display: flex;
     flex-direction: column;
     justify-content: center; 
-    width: 70px; /* Width of the sidebar */
-    background-color: #37c28c;
-    height: 60vh;
+    width: 65px; /* Width of the sidebar */
+    background-color: #05b471;
+    height: 95vh;
   }
   
   .sidebar-containt{

@@ -4,7 +4,7 @@
       "id": "0f9d",
       "name": "SCIP",
       "description": "it is europe govt project",
-      "status": "In progress",
+      "status": "Cancelled",
       "date": "2024-04-15",
       "time": "00:38"
     },
@@ -20,7 +20,7 @@
       "id": "7620",
       "name": "Spider",
       "description": "It is the atlasian project",
-      "status": "Cancelled",
+      "status": "Completed",
       "date": "2024-04-11",
       "time": "08:39"
     },
@@ -28,7 +28,7 @@
       "id": "53a1",
       "name": "EDMAC",
       "description": "It is the atlas group project",
-      "status": "In progress",
+      "status": "Cancelled",
       "date": "2023-10-11",
       "time": "13:39"
     },
@@ -36,7 +36,7 @@
       "id": "8294",
       "name": "Package Order",
       "description": "It is in a anguler project",
-      "status": "Completed",
+      "status": "In progress",
       "date": "2024-04-11",
       "time": "12:06"
     },
