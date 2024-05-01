@@ -1,171 +1,38 @@
-.navbar-custom {
-  background-color: #ce641e; /* Set navbar background color */
+.table-hover tbody tr:hover {
+  background-color: #f0f0f0; /* Set table row hover background color */
 }
 
-.navbar-custom .navbar-brand {
-  color: #fff; /* Set navbar brand text color */
+.dashboard-containt {
+  display: flex;
+  margin-top: 1vw;
+  height: 100%;
 }
 
-.navbar-custom .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Set navbar toggler icon color */
+.sidecontaint {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 4%; /* Width of the sidebar */
+  background-color: #05b471;
 }
-  
-  .table-hover tbody tr:hover {
-    background-color: #f0f0f0; /* Set table row hover background color */
-  }
-  
-  .btn-info {
-    background-color: #17a2b8; /* Set button background color */
-    border-color: #17a2b8; /* Set button border color */
-  }
-  
-  .btn-info:hover {
-    background-color: #138496; /* Set button hover background color */
-    border-color: #138496; /* Set button hover border color */
-  }
-  
-  .btn-danger {
-    background-color: #dc3545; /* Set button background color */
-    border-color: #dc3545; /* Set button border color */
-  }
-  
-  .btn-danger:hover {
-    background-color: #c82333; /* Set button hover background color */
-    border-color: #bd2130; /* Set button hover border color */
-  }
-  
-  .formbold-mb-5 {
-    margin-bottom: 20px;
-  }
-  .formbold-pt-3 {
-    padding-top: 12px;
-  }
-  .formbold-main-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 48px;
-  }
 
-  .formbold-form-wrapper {
-    margin: 0 auto;
-    max-width: 550px;
-    width: 100%;
-    background: white;
-  }
-  .formbold-form-label {
-    display: block;
-    font-weight: 500;
-    font-size: 16px;
-    color: #07074d;
-    margin-bottom: 12px;
-  }
-  .formbold-form-label-2 {
-    font-weight: 600;
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
+.sidebar-containt {
+  margin-left: 0.7vw;
+}
 
-  .formbold-form-input {
-    width: 100%;
-    padding: 12px 24px;
-    border-radius: 6px;
-    border: 1px solid #e0e0e0;
-    background: white;
-    font-weight: 500;
-    font-size: 16px;
-    color: #6b7280;
-    outline: none;
-    resize: none;
-  }
-  .formbold-form-input:focus {
-    border-color: #ce641e;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
-  }
+.dash-containt {
+  width: 96%;
+}
 
-  .formbold-btn {
-    text-align: center;
-    font-size: 16px;
-    border-radius: 6px;
-    padding: 14px 32px;
-    border: none;
-    font-weight: 600;
-    background-color: #ce641e;
-    color: white;
-    cursor: pointer;
-  }
-  .formbold-btn:hover {
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
-  }
+.main-containt {
+  margin-left: 2vw;
+  height: 37vw; /* Set the desired height */
+  overflow: auto;
+}
 
-  .formbold--mx-3 {
-    margin-left: -12px;
-    margin-right: -12px;
-  }
-  .formbold-px-3 {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-  .flex {
-    display: flex;
-  }
-  .flex-wrap {
-    flex-wrap: wrap;
-  }
-  .w-full {
-    width: 100%;
-  }
-  .formbold-radio {
-    width: 20px;
-    height: 20px;
-  }
-  .formbold-radio-label {
-    font-weight: 500;
-    font-size: 16px;
-    padding-left: 12px;
-    color: #070707;
-    padding-right: 20px;
-  }
-
-  .dashboard-containt{
-    display: flex;
-    background-color: #bd2130;
-  }
-
-  .sidecontaint{
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    width: 4%; /* Width of the sidebar */
-    background-color: #05b471;
-    max-height: 50%;
-  }
-
-  .sidebar-containt{
-    margin-left: 0.7vw;
-  }
-
-  .dash-containt{
-    width: 96%;
-    height: 50%
-  }
-
-  .main-containt{
-    margin-top: 1vw;
-    margin-left: 2vw;
-    //height: 37vw; /* Set the desired height */
-    overflow: auto;
-  }
-
-  .main-containt thead {
-    position: sticky; /* Fix the header position */
-    top: 0; /* Place the header at the top */
-    background-color: #f8f9fa; /* Background color for the header */
-    z-index: 1; /* Ensure header is above other content */
-  }
-
-  @media (min-width: 540px) {
-    .sm\:w-half {
-      width: 50%;
-    }
-  }
+.main-containt thead {
+  position: sticky; /* Fix the header position */
+  top: 0; /* Place the header at the top */
+  background-color: #f8f9fa; /* Background color for the header */
+  z-index: 1; /* Ensure header is above other content */
+}

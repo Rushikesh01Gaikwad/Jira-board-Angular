@@ -1,29 +1,26 @@
-<div>
-  <app-navbar></app-navbar>
-
-  <div>
-    <div class="dashboard-containt">
-      <div class="sidecontaint">
-        <div class="sidebar-containt">
-          <a [routerLink]="['/Graph']">
-            <img src="assets/icons/dashboard.svg" width="35" />
-          </a>
-        </div>
-        <br />
-        <div class="sidebar-containt">
-          <a [routerLink]="['/Dashboard']">
-            <img src="assets/icons/list.svg" width="35" />
-          </a>
-        </div>
-        <br />
-        <div class="sidebar-containt">
-          <a [routerLink]="['/add']">
-            <img src="assets/icons/add.svg" width="35" />
-          </a>
-        </div>
-      </div>
-      <div class="dash-containt">
-        <div class="main-containt">
+<app-navbar></app-navbar>
+<div class="dashboard-containt">
+  <div class="sidecontaint">
+    <div class="sidebar-containt">
+      <a [routerLink]="['/Graph']">
+        <img src="assets/icons/dashboard.svg" width="35" />
+      </a>
+    </div>
+    <br />
+    <div class="sidebar-containt">
+      <a [routerLink]="['/Dashboard']">
+        <img src="assets/icons/list.svg" width="35" />
+      </a>
+    </div>
+    <br />
+    <div class="sidebar-containt">
+      <a [routerLink]="['/add']">
+        <img src="assets/icons/add.svg" width="35" />
+      </a>
+    </div>
+  </div>
+  <div class="dash-containt">
+    <div class="main-containt">
           <table class="table table-hover table-responsive">
             <thead>
               <tr>
@@ -103,8 +100,6 @@
             </tbody>
           </table>
         </div>
-      </div>
-    </div>
   </div>
 </div>
 
