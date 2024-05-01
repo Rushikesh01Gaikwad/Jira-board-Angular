@@ -129,16 +129,31 @@
 
   .dashboard-containt{
     display: flex;
+    background-color: #bd2130;
   }
 
   .sidecontaint{
-    width: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    width: 4%; /* Width of the sidebar */
+    background-color: #05b471;
+    max-height: 50%;
+  }
+
+  .sidebar-containt{
+    margin-left: 0.7vw;
+  }
+
+  .dash-containt{
+    width: 96%;
+    height: 50%
   }
 
   .main-containt{
-    width: 100%;
     margin-top: 1vw;
-    height: 37vw; /* Set the desired height */
+    margin-left: 2vw;
+    //height: 37vw; /* Set the desired height */
     overflow: auto;
   }
 

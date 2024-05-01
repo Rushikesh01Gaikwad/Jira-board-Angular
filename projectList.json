@@ -77,66 +77,6 @@
       "status": "Registered",
       "date": "2024-04-28",
       "time": "16:39"
-    },
-    {
-      "id": "2969",
-      "name": "Movie Recomandation",
-      "description": "It is the Python project",
-      "department": "Devops",
-      "location": "Punjab",
-      "status": "In progress",
-      "date": "2003-05-20",
-      "time": "15:42"
-    },
-    {
-      "id": "d8f2",
-      "name": "edfgh",
-      "description": "sdfghjk",
-      "department": "Devops",
-      "location": "Punjab",
-      "status": "In progress",
-      "date": "2024-04-28",
-      "time": "16:32"
-    },
-    {
-      "id": "bbb6",
-      "name": "vbnmmjhg",
-      "description": "dfghjk,mnbvcx",
-      "department": "Devops",
-      "location": "Punjab",
-      "status": "Registered",
-      "date": "2024-04-28",
-      "time": "16:39"
-    },
-    {
-      "id": "2969",
-      "name": "Movie Recomandation",
-      "description": "It is the Python project",
-      "department": "Devops",
-      "location": "Punjab",
-      "status": "In progress",
-      "date": "2003-05-20",
-      "time": "15:42"
-    },
-    {
-      "id": "d8f2",
-      "name": "edfgh",
-      "description": "sdfghjk",
-      "department": "Devops",
-      "location": "Punjab",
-      "status": "In progress",
-      "date": "2024-04-28",
-      "time": "16:32"
-    },
-    {
-      "id": "bbb6",
-      "name": "vbnmmjhg",
-      "description": "dfghjk,mnbvcx",
-      "department": "Devops",
-      "location": "Punjab",
-      "status": "Registered",
-      "date": "2024-04-28",
-      "time": "16:39"
     }
   ],
   "signIn": [
