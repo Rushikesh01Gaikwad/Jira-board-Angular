@@ -18,7 +18,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule} from '@angular/material/sort';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { AddprojectComponent } from './component/addproject/addproject.component';
-import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { CardsComponent } from './component/cards/cards.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
@@ -36,7 +35,6 @@ import {MatButtonModule} from '@angular/material/button';
     GraphComponent,
     StatusComponent,
     AddprojectComponent,
-    SidebarComponent,
     CardsComponent,
   ],
   

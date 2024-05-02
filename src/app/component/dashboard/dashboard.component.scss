@@ -4,8 +4,7 @@
 
 .dashboard-containt {
   display: flex;
-  margin-top: 1vw;
-  height: 100%;
+  height: auto;
 }
 
 .sidecontaint {
@@ -14,14 +13,22 @@
   justify-content: center;
   width: 4%; /* Width of the sidebar */
   background-color: #05b471;
+  height: 92vh;
 }
 
 .sidebar-containt {
   margin-left: 0.7vw;
+  margin-bottom: 1vw;
 }
 
 .dash-containt {
   width: 96%;
+  padding-top: 5px;
+}
+
+.bg-btn{
+  background-color: #05b471; 
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .main-containt {

@@ -3,162 +3,122 @@
   <div class="sidecontaint">
     <div class="sidebar-containt">
       <a [routerLink]="['/Graph']">
-        <img src="assets/icons/dashboard.svg" width="35" />
+        <img src="assets/icons/dashboard.svg" width="38" />
       </a>
     </div>
     <br />
     <div class="sidebar-containt">
       <a [routerLink]="['/Dashboard']">
-        <img src="assets/icons/list.svg" width="35" />
+        <img src="assets/icons/list_filled.svg" width="38" />
       </a>
     </div>
     <br />
     <div class="sidebar-containt">
       <a [routerLink]="['/add']">
-        <img src="assets/icons/add.svg" width="35" />
+        <img src="assets/icons/add.svg" width="38" />
       </a>
     </div>
   </div>
   <div class="dash-containt">
     <div class="main-containt">
-          <table class="table table-hover table-responsive">
-            <thead>
-              <tr>
-                <th scope="col">
-                  <h5>Name</h5>
-                </th>
-                <th scope="col">
-                  <h5>Description</h5>
-                </th>
-                <th scope="col">
-                  <h5>Status</h5>
-                </th>
-                <th scope="col">
-                  <h5>Date</h5>
-                </th>
-                <th scope="col">
-                  <h5>Time</h5>
-                </th>
-                <th scope="col">
-                  <h5>Action</h5>
-                </th>
-                <th scope="col">
-                  <h5>Change Status</h5>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of allprojects">
-                <td>{{ item.name }}</td>
-                <td>{{ item.description }}</td>
-                <td>{{ item.status }}</td>
-                <td>{{ item.date }}</td>
-                <td>{{ item.time }}</td>
-                <td>
-                  <img
-                    src="/assets/icons/edit_icon.svg"
-                    class="me-3"
-                    alt="edit_icon"
-                    data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop"
-                    (click)="setSelectedItem(item)"
-                  />
-                  <img
-                    src="/assets/icons/delete-button.svg"
-                    class="me-3"
-                    width="26"
-                    alt="delete-button"
-                    data-bs-toggle="modal"
-                    data-bs-target="#ModalDelete"
-                    (click)="setSelectedItem(item)"
-                  />
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-warning btn-sm"
-                    (click)="changeStatus(item, 'In progress')"
-                  >
-                    <b>In Progress</b>
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-success mx-4 btn-sm"
-                    (click)="changeStatus(item, 'Completed')"
-                  >
-                    <b>Completed</b>
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-danger btn-sm"
-                    (click)="changeStatus(item, 'Cancelled')"
-                  >
-                    <b>Cancelled</b>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <table class="table table-hover table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">
+              <h5>Name</h5>
+            </th>
+            <th scope="col">
+              <h5>Description</h5>
+            </th>
+            <th scope="col">
+              <h5>Status</h5>
+            </th>
+            <th scope="col">
+              <h5>Department</h5>
+            </th>
+            <th scope="col">
+              <h5>Date</h5>
+            </th>
+            <th scope="col">
+              <h5>Action</h5>
+            </th>
+            <th scope="col">
+              <h5>Change Status</h5>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of allprojects">
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.status }}</td>
+            <td>{{ item.department }}</td>
+            <td>{{ item.date }}</td>
+            <td>
+              <img src="/assets/icons/edit_icon.svg" class="me-3" alt="edit_icon" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop" (click)="setSelectedItem(item)" />
+              <img src="/assets/icons/delete-button.svg" class="me-3" width="26" alt="delete-button"
+                data-bs-toggle="modal" data-bs-target="#ModalDelete" (click)="setSelectedItem(item)" />
+            </td>
+            <td>
+              <button type="button" class="btn btn-warning btn-sm" (click)="changeStatus(item, 'In progress')">
+                <b>In Progress</b>
+              </button>
+              <button type="button" class="btn btn-success mx-4 btn-sm" (click)="changeStatus(item, 'Completed')">
+                <b>Completed</b>
+              </button>
+              <button type="button" class="btn btn-danger btn-sm" (click)="changeStatus(item, 'Cancelled')">
+                <b>Cancelled</b>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center pagination-lg mt-5">
+        <li class="page-item disabled">
+          <a class="page-link text-light bg-btn"><b>Previous</b></a>
+        </li>
+        <li class="page-item"><a class="page-link" href="/">1</a></li>
+        <li class="page-item"><a class="page-link" href="/">2</a></li>
+        <li class="page-item"><a class="page-link" href="/">3</a></li>
+        <li class="page-item">
+          <a class="page-link text-light bg-btn"
+            href="#"><b>Next</b></a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>
 
 <!-- Modal edit project-->
-<div
-  class="modal fade"
-  id="staticBackdrop"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background-color: whitesmoke">
         <span class="modal-title fs-5" id="staticBackdropLabel">
           <h5>Edit</h5>
         </span>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form [formGroup]="editForm">
         <div class="modal-body">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"
-              ><b>Name</b></label
-            >
+            <label for="exampleFormControlInput1" class="form-label"><b>Name</b></label>
             <input type="text" formControlName="name" class="form-control" />
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label"
-              ><b>Description</b></label
-            >
-            <textarea
-              class="form-control"
-              formControlName="description"
-              rows="3"
-            ></textarea>
+            <label for="exampleFormControlTextarea1" class="form-label"><b>Description</b></label>
+            <textarea class="form-control" formControlName="description" rows="3"></textarea>
           </div>
         </div>
         <div class="modal-footer" style="background-color: whitesmoke">
-          <button
-            type="button"
-            class="btn btn-secondary btn-lg"
-            data-bs-dismiss="modal"
-          >
+          <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">
             Close
           </button>
-          <button
-            type="button"
-            class="btn btn-success btn-lg text-light"
-            (click)="editItem()"
-            data-bs-dismiss="modal"
-          >
+          <button type="button" class="btn btn-success btn-lg text-light" (click)="editItem()" data-bs-dismiss="modal">
             Update
           </button>
         </div>
@@ -168,41 +128,22 @@
 </div>
 
 <!-- Modal Delete Popup -->
-<div
-  class="modal fade"
-  id="ModalDelete"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="ModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="background-color: whitesmoke">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <span><b>Are you sure to delete this item ?</b></span>
       </div>
       <div class="modal-footer" style="background-color: whitesmoke">
-        <button
-          type="button"
-          class="btn btn-secondary btn-lg"
-          data-bs-dismiss="modal"
-        >
+        <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">
           No
         </button>
-        <button
-          type="button"
-          class="btn btn-success btn-lg text-light"
-          (click)="deleteItem(selectedItem)"
-          data-bs-dismiss="modal"
-        >
+        <button type="button" class="btn btn-success btn-lg text-light" (click)="deleteItem(selectedItem)"
+          data-bs-dismiss="modal">
           Yes
         </button>
       </div>
