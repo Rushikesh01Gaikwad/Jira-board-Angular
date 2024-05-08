@@ -16,6 +16,11 @@ export class DashboardComponent implements OnInit {
   allprojects: Projectinterface[] = [];
   totalLength: number = 0;
   editForm!: FormGroup;
+  currentPage: number = 1;
+  itemsPerPage: number = 13;
+  totalPages = 0;
+  pages: number[] = [];
+  pagedProjects: Projectinterface[] = [];
   
 
   constructor(
@@ -41,7 +46,34 @@ export class DashboardComponent implements OnInit {
     this.editForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required]
-  });
+    });
+    // Load the current page of projects
+    this.loadPage();
+  }
+
+  loadProjects(): void {
+    this.projectjsonservice.getAll().subscribe((data) => {
+      this.allprojects = data;
+      this.totalLength = data.length;
+      // Calculate total pages and generate page numbers
+      this.totalPages = Math.ceil(this.totalLength / this.itemsPerPage);
+      console.log(this.totalPages)
+      this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+      this.loadPage(); // Load the current page of projects after updating data
+    });
+  }
+
+  loadPage(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = Math.min(startIndex + this.itemsPerPage - 1, this.totalLength - 1);
+    this.pagedProjects = this.allprojects.slice(startIndex, endIndex + 1);  
+  }
+
+  goToPage(pageNumber: number): void {
+    if (pageNumber >= 1 && pageNumber <= this.totalPages) {
+      this.currentPage = pageNumber;
+      this.loadPage();
+    }
   }
 
   create(): void {
@@ -57,13 +89,6 @@ export class DashboardComponent implements OnInit {
 
   onStatusChange(event: any): void {
     this.formdata.status = event.target.value;
-  }
-
-  loadProjects(): void {
-    this.projectjsonservice.getAll().subscribe((data) => {
-      this.allprojects = data;
-      this.totalLength = data.length;
-    });
   }
 
   loginpage(): void {

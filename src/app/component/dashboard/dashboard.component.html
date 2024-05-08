@@ -48,7 +48,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of allprojects">
+          <tr *ngFor="let item of pagedProjects">
             <td>{{ item.name }}</td>
             <td>{{ item.description }}</td>
             <td>{{ item.status }}</td>
@@ -74,21 +74,20 @@
           </tr>
         </tbody>
       </table>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center pagination-lg mt-5">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link text-light bg-btn" (click)="goToPage(currentPage - 1)"><b>Previous</b></a>
+          </li>
+          <li *ngFor="let page of pages" class="page-item" [class.active]="currentPage === page">
+            <a class="page-link" (click)="goToPage(page)">{{page}}</a>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="page-link text-light bg-btn" (click)="goToPage(currentPage + 1)"><b>Next</b></a>
+          </li>
+        </ul>
+      </nav>
     </div>
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center pagination-lg mt-5">
-        <li class="page-item disabled">
-          <a class="page-link text-light bg-btn"><b>Previous</b></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="/">1</a></li>
-        <li class="page-item"><a class="page-link" href="/">2</a></li>
-        <li class="page-item"><a class="page-link" href="/">3</a></li>
-        <li class="page-item">
-          <a class="page-link text-light bg-btn"
-            href="#"><b>Next</b></a>
-        </li>
-      </ul>
-    </nav>
   </div>
 </div>
 
@@ -150,72 +149,3 @@
     </div>
   </div>
 </div>
-
-<!--Add Project Modal -->
-<!-- <div class="modal fade" id="addProject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form>
-        <div class="modal-header" style="background-color: whitesmoke;">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Add project</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="formbold-main-wrapper">
-            <div class="formbold-form-wrapper">
-              <div class="flex flex-wrap formbold--mx-3">
-                <div class="w-full formbold-px-3">
-                  <div class="formbold-mb-5">
-                    <label for="Name" class="formbold-form-label"> Title </label>
-                    <input type="text" name="name" id="name" [(ngModel)]="formdata.name" class="formbold-form-input" />
-                  </div>
-                </div>
-                <div class="w-full formbold-px-3">
-                  <div class="formbold-mb-5">
-                    <label for="Desc" class="formbold-form-label">Description</label>
-                    <input type="text" name="description" id="description" [(ngModel)]="formdata.description"
-                      class="formbold-form-input" />
-                  </div>
-                </div>
-              </div>
-
-              <div class="formbold-mb-5">
-                <label for="status" class="formbold-form-label px-1">
-                  Status
-                </label>
-                <select class="form-select py-2" id="status" aria-label="Project Status" [(ngModel)]="formdata.status"
-                  (change)="onStatusChange($event)">
-                  <option value="Registered">Register</option>
-                  <option value="In progress">In Progress</option>
-                  <option value="Completed">Completed</option>
-                  <option value="Cancelled">Cancelled</option>
-                </select>
-              </div>
-
-              <div class="flex flex-wrap formbold--mx-3">
-                <div class="w-full sm:w-half formbold-px-3">
-                  <div class="formbold-mb-5 w-full">
-                    <label for="date" class="formbold-form-label"> Date </label>
-                    <input type="date" name="date" id="date" [(ngModel)]="formdata.date" class="formbold-form-input" />
-                  </div>
-                </div>
-                <div class="w-full sm:w-half formbold-px-3">
-                  <div class="formbold-mb-5">
-                    <label for="time" class="formbold-form-label"> Time </label>
-                    <input type="time" name="time" id="time" [(ngModel)]="formdata.time" class="formbold-form-input" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer" style="background-color: whitesmoke;">
-          <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-info btn-lg text-light" data-bs-dismiss="modal"
-            (click)="create()">Submit</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div> -->
