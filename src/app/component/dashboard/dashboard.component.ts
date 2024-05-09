@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Projectinterface } from '../projectinterface';
 import { ProjectjsonService } from '../projectjson.service';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
 
   allprojects: Projectinterface[] = [];
   totalLength: number = 0;
@@ -21,13 +24,23 @@ export class DashboardComponent implements OnInit {
   totalPages = 0;
   pages: number[] = [];
   pagedProjects: Projectinterface[] = [];
-  
+
+  dataSource = new MatTableDataSource<Projectinterface>();
+  displayedColumns: string[] = ['name', 'description', 'status', 'department', 'date', 'action', 'changeStatus'];
+  @ViewChild(MatSort) sort!: MatSort;
+
+  selectedItem: any = null; // Initialize selectedItem here
 
   constructor(
     private router: Router,
     private projectjsonservice: ProjectjsonService,
+    private _liveAnnouncer: LiveAnnouncer,
     private formBuilder: FormBuilder,
   ) {}
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+  }
 
   formdata: Projectinterface = {
     name: '',
@@ -39,16 +52,20 @@ export class DashboardComponent implements OnInit {
     time: ''
   };
 
-  selectedItem: any;
+  announceSortChange(sortState: Sort): void {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
 
   ngOnInit(): void {
-    this.loadProjects();
     this.editForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required]
     });
-    // Load the current page of projects
-    this.loadPage();
+    this.loadProjects(); // Load the current page of projects
   }
 
   loadProjects(): void {
@@ -57,23 +74,24 @@ export class DashboardComponent implements OnInit {
       this.totalLength = data.length;
       // Calculate total pages and generate page numbers
       this.totalPages = Math.ceil(this.totalLength / this.itemsPerPage);
-      console.log(this.totalPages)
       this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-      this.loadPage(); // Load the current page of projects after updating data
+      this.goToPage(1); // Load the first page explicitly after updating data
     });
   }
-
-  loadPage(): void {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = Math.min(startIndex + this.itemsPerPage - 1, this.totalLength - 1);
-    this.pagedProjects = this.allprojects.slice(startIndex, endIndex + 1);  
-  }
+  
 
   goToPage(pageNumber: number): void {
     if (pageNumber >= 1 && pageNumber <= this.totalPages) {
       this.currentPage = pageNumber;
-      this.loadPage();
+      this.loadPage(); // Load the projects for the current page
+      this.dataSource.data = this.pagedProjects; // Update the data source with the projects for the current page
     }
+  }
+  
+  loadPage(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = Math.min(startIndex + this.itemsPerPage - 1, this.totalLength - 1);
+    this.pagedProjects = this.allprojects.slice(startIndex, endIndex + 1);
   }
 
   create(): void {
@@ -123,8 +141,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  
-
   deleteItem(item: any): void {
     if (!item) return; // Ensure there is a selected item
     this.projectjsonservice.delete(item.id).subscribe({
@@ -150,6 +166,5 @@ export class DashboardComponent implements OnInit {
         },
         error: console.error // Log errors to console
     });
-}
-
+  }
 }
