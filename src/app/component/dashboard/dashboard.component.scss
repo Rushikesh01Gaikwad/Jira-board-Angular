@@ -23,23 +23,14 @@
 
 .dash-containt {
   width: 96%;
-  padding-top: 5px;
+  padding-top: 80px;
 }
 
-.navbar-custom {
-  background-color: #05b471;
-  /* Set navbar background color */
-  padding-bottom: 15px;
-}
-
-.navbar-custom .navbar-brand {
-  color: #fff;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  /* Set navbar brand text color */
-}
-
-.parentdiv {
-  height: 8vh
+.main-containt {
+  margin-left: 1vw;
+  margin-right: 1vw;
+  height: 34vw; /* Set the desired height */
+  overflow: auto;
 }
 
 .bg-btn{
@@ -47,16 +38,71 @@
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.main-containt {
-  margin-left: 1vw;
-  margin-right: 1vw;
-  //height: 37vw; /* Set the desired height */
-  //overflow: auto;
-}
-
-.main-containt thead {
+.main-containt th {
   position: sticky; /* Fix the header position */
   top: 0; /* Place the header at the top */
-  background-color: #f8f9fa; /* Background color for the header */
+  background-color: #ccece0; /* Background color for the header */
   z-index: 1; /* Ensure header is above other content */
+
+}
+
+
+body {
+  background-image: linear-gradient(to right , #cb2d3e , #ef473a);
+}
+
+.searchBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:  translate(-50%,50%);
+  background: #2f3640;
+  height: 60px;
+  border-radius: 40px;
+  padding: 10px;
+
+}
+
+.searchBox:hover > .searchInput {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.searchBox:hover > .searchButton {
+background: white;
+color : #2f3640;
+}
+
+.searchButton {
+  color: white;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2f3640;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.searchInput {
+  border:none;
+  background: none;
+  outline:none;
+  float:left;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+
+}
+
+@media screen and (max-width: 620px) {
+.searchBox:hover > .searchInput {
+  width: 150px;
+  padding: 0 6px;
+}
 }

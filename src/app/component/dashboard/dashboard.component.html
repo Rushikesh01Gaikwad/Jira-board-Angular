@@ -1,22 +1,5 @@
 <div>
-  <div class="parentdiv">
-    <nav class="navbar navbar-expand-lg navbar-custom">
-      <div class="container-fluid">
-        <a class="navbar-brand d-flex text-light">
-          <h3><b>Status</b></h3>
-        </a>
-        <form class="d-flex flex-grow-1 container" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 100%;">
-        </form>
-        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-          <img class="mx-3" src="/assets/icons/user.svg" width="35" alt="user" />
-          <a [routerLink]="['/']">
-            <img src='/assets/icons/logout.svg' width="35" alt="logout_svg" />
-          </a>
-        </div>
-      </div>
-    </nav>
-  </div>
+  <app-navbar></app-navbar>
   <div class="dashboard-containt">
     <div class="sidecontaint">
       <div class="sidebar-containt">
@@ -38,6 +21,17 @@
       </div>
     </div>
     <div class="dash-containt">
+      
+      <div class="searchBox">
+
+        <input class="searchInput"type="text" name="" placeholder="Search">
+        <button class="searchButton" href="#">
+            <i class="material-icons">
+                search
+            </i>
+        </button>
+    </div>
+
       <div class="main-containt">
         <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
           class="table table-hover table-responsive">
@@ -107,78 +101,25 @@
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
-          <!-- <thead>
-            <tr>
-              <th scope="col">
-                <h5>Name</h5>
-              </th>
-              <th scope="col">
-                <h5>Description</h5>
-              </th>
-              <th scope="col">
-                <h5>Status</h5>
-              </th>
-              <th scope="col">
-                <h5>Department</h5>
-              </th>
-              <th scope="col">
-                <h5>Date</h5>
-              </th>
-              <th scope="col">
-                <h5>Action</h5>
-              </th>
-              <th scope="col">
-                <h5>Change Status</h5>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of pagedProjects">
-              <td>{{ item.name }}</td>
-              <td>{{ item.description }}</td>
-              <td>{{ item.status }}</td>
-              <td>{{ item.department }}</td>
-              <td>{{ item.date }}</td>
-              <td>
-                <img src="/assets/icons/edit_icon.svg" class="me-3" alt="edit_icon" data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop" (click)="setSelectedItem(item)" />
-                <img src="/assets/icons/delete-button.svg" class="me-3" width="26" alt="delete-button"
-                  data-bs-toggle="modal" data-bs-target="#ModalDelete" (click)="setSelectedItem(item)" />
-              </td>
-              <td>
-                <button type="button" class="btn btn-warning btn-sm" (click)="changeStatus(item, 'In progress')">
-                  <b>In Progress</b>
-                </button>
-                <button type="button" class="btn btn-success mx-4 btn-sm" (click)="changeStatus(item, 'Completed')">
-                  <b>Completed</b>
-                </button>
-                <button type="button" class="btn btn-danger btn-sm" (click)="changeStatus(item, 'Cancelled')">
-                  <b>Cancelled</b>
-                </button>
-              </td>
-            </tr>
-          </tbody> -->
         </table>
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center  mt-3">
-            <li class="page-item" [class.disabled]="currentPage === 1">
-              <a class="page-link text-light bg-btn" (click)="goToPage(currentPage - 1)"><b>Previous</b></a>
-            </li>
-            <li *ngFor="let page of pages" class="page-item" [class.active]="currentPage === page">
-              <a class="page-link" (click)="goToPage(page)">{{page}}</a>
-            </li>
-            <li class="page-item" [class.disabled]="currentPage === totalPages">
-              <a class="page-link text-light bg-btn" (click)="goToPage(currentPage + 1)"><b>Next</b></a>
-            </li>
-          </ul>
-        </nav>
       </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center  mt-5">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link text-light bg-btn" (click)="goToPage(currentPage - 1)"><b>Back</b></a>
+          </li>
+          <li *ngFor="let page of pages" class="page-item" [class.active]="currentPage === page">
+            <a class="page-link" (click)="goToPage(page)">{{page}}</a>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="page-link text-light bg-btn" (click)="goToPage(currentPage + 1)"><b>Next</b></a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
-
 </div>
+
 <!-- Modal edit project-->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
   aria-labelledby="staticBackdropLabel" aria-hidden="true">

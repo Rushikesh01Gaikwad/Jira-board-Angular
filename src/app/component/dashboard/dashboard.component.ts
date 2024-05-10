@@ -84,7 +84,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     if (pageNumber >= 1 && pageNumber <= this.totalPages) {
       this.currentPage = pageNumber;
       this.loadPage(); // Load the projects for the current page
-      this.dataSource.data = this.pagedProjects; // Update the data source with the projects for the current page
+      this.dataSource.data = this.pagedProjects; // Update the data source with the projects for the current page 
     }
   }
   
