@@ -1,35 +1,52 @@
-<app-navbar></app-navbar>
-<div class="graph-container">
-  <div class="sidecontaint">
-    <div class="sidebar-containt">
-      <a [routerLink]="['/Graph']">
-        <img src="assets/icons/dashboard_filled.svg" width="38" />
-      </a>
+<div>
+  <div class="parentdiv">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex text-light">
+          <h3><b>Dashboard</b></h3>
+        </a>
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+          <img class="mx-3" src="/assets/icons/user.svg" width="35" alt="user" />
+          <a [routerLink]="['/']">
+            <img src='/assets/icons/logout.svg' width="35" alt="logout_svg" />
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="graph-container">
+    <div class="sidecontaint">
+      <div class="sidebar-containt">
+        <a [routerLink]="['/Graph']">
+          <img src="assets/icons/dashboard_filled.svg" width="38" />
+        </a>
+      </div>
+      <br />
+      <div class="sidebar-containt">
+        <a [routerLink]="['/Dashboard']">
+          <img src="assets/icons/list.svg" width="38" />
+        </a>
+      </div>
+      <br />
+      <div class="sidebar-containt">
+        <a [routerLink]="['/add']">
+          <img src="assets/icons/add.svg" width="38" />
+        </a>
+      </div>
     </div>
-    <br />
-    <div class="sidebar-containt">
-      <a [routerLink]="['/Dashboard']">
-        <img src="assets/icons/list.svg" width="38" />
-      </a>
-    </div>
-    <br />
-    <div class="sidebar-containt">
-      <a [routerLink]="['/add']">
-        <img src="assets/icons/add.svg" width="38" />
-      </a>
+    <div class="flex">
+      <div>
+        <app-cards></app-cards>
+      </div>
+      <div class="graph-containt">
+        <div class="pie-container">
+          <div class="pie" [chart]="pieChart"></div>
+        </div>
+        <div class="bar-container">
+          <div class="bar" [chart]="barChart"></div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="flex">
-    <div>
-      <app-cards></app-cards>
-    </div>
-    <div class="graph-containt">
-      <div class="pie-container">
-        <div class="pie" [chart]="pieChart"></div>
-      </div>
-      <div class="bar-container">
-        <div class="bar" [chart]="barChart"></div>
-      </div>
-    </div>
-  </div>
+
 </div>

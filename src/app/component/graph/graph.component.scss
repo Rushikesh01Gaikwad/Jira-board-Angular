@@ -18,6 +18,22 @@
   height: 92vh;
 }
 
+.navbar-custom {
+  background-color: #05b471;
+  /* Set navbar background color */
+  padding-bottom: 15px;
+}
+
+.navbar-custom .navbar-brand {
+  color: #fff;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  /* Set navbar brand text color */
+}
+
+.parentdiv {
+  height: 8vh
+}
+
 .sidebar-containt {
   margin-left: 0.7vw;
   margin-bottom: 1vw;
@@ -34,5 +50,5 @@
 
 .bar-container {
   width: 50%;
-  margin-right: 3vw;
+  margin-right: 0vw;
 }

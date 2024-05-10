@@ -6,7 +6,7 @@
       "description": "It is the react project",
       "department": "Data",
       "location": "Delhi",
-      "status": "Registered",
+      "status": "Completed",
       "date": "2024-05-02",
       "time": "10:28"
     },
@@ -36,7 +36,7 @@
       "description": "It is the atlassian project",
       "department": "Testing",
       "location": "Maharastra",
-      "status": "Registered",
+      "status": "Completed",
       "date": "2024-05-02",
       "time": "10:31"
     },
@@ -76,7 +76,7 @@
       "description": "It is the java full stack",
       "department": "Data",
       "location": "Maharashtra",
-      "status": "In progress",
+      "status": "Completed",
       "date": "2024-05-02",
       "time": "10:37"
     },
@@ -126,7 +126,7 @@
       "description": "It is in the angular project",
       "department": "Apps & Software",
       "location": "Karnataka",
-      "status": "Registered",
+      "status": "Completed",
       "date": "2024-05-02",
       "time": "10:44"
     },
