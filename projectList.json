@@ -6,7 +6,7 @@
       "description": "It is the react project",
       "department": "Data",
       "location": "Delhi",
-      "status": "Cancelled",
+      "status": "In progress",
       "date": "2024-05-02",
       "time": "10:28"
     },
@@ -16,7 +16,7 @@
       "description": "It is the angular project",
       "department": "Apps & Software",
       "location": "Maharastra",
-      "status": "Registered",
+      "status": "In progress",
       "date": "2024-05-02",
       "time": "10:29"
     },
@@ -26,7 +26,7 @@
       "description": "It is the react project",
       "department": "Devops",
       "location": "Karnataka",
-      "status": "In progress",
+      "status": "Completed",
       "date": "2024-05-02",
       "time": "10:29"
     },
@@ -46,7 +46,7 @@
       "description": "It is the atlas group project",
       "department": "Testing",
       "location": "Delhi",
-      "status": "In progress",
+      "status": "Cancelled",
       "date": "2024-05-02",
       "time": "10:32"
     },
@@ -66,7 +66,7 @@
       "description": "It is the learning point",
       "department": "Apps & Software",
       "location": "Delhi",
-      "status": "Registered",
+      "status": "In progress",
       "date": "2024-05-02",
       "time": "10:34"
     },
@@ -76,7 +76,7 @@
       "description": "It is the java full stack",
       "department": "Data",
       "location": "Maharashtra",
-      "status": "In progress",
+      "status": "Completed",
       "date": "2024-05-02",
       "time": "10:37"
     },
@@ -96,7 +96,7 @@
       "description": "It is the js project",
       "department": "Devops",
       "location": "Maharashtra",
-      "status": "Registered",
+      "status": "In progress",
       "date": "2024-05-02",
       "time": "10:42"
     },
@@ -136,7 +136,7 @@
       "description": "It is the project",
       "department": "Data",
       "location": "Maharashtra",
-      "status": "Completed",
+      "status": "Cancelled",
       "date": "2024-05-02",
       "time": "10:45"
     },
@@ -156,49 +156,9 @@
       "description": "It is the Java coder class",
       "department": "Devops",
       "location": "Punjab",
-      "status": "Registered",
-      "date": "2024-05-08",
-      "time": "09:07"
-    },
-    {
-      "id": "efd5",
-      "name": "Ubutu",
-      "description": "It is the OS of Computer",
-      "department": "Apps & Software",
-      "location": "Karnataka",
       "status": "In progress",
       "date": "2024-05-08",
-      "time": "09:08"
-    },
-    {
-      "id": "852b",
-      "name": "Android",
-      "description": "It is the OS of mobile",
-      "department": "Testing",
-      "location": "Delhi",
-      "status": "Registered",
-      "date": "2024-05-08",
-      "time": "09:08"
-    },
-    {
-      "id": "1461",
-      "name": "Windows",
-      "description": "It is the Computer OS",
-      "department": "Data",
-      "location": "Maharashtra",
-      "status": "Registered",
-      "date": "2024-05-08",
-      "time": "09:09"
-    },
-    {
-      "id": "ab12",
-      "name": "samsung",
-      "description": "it is the mobile company",
-      "department": "Apps & Software",
-      "location": "Delhi",
-      "status": "Completed",
-      "date": "2024-05-08",
-      "time": "10:42"
+      "time": "09:07"
     }
   ],
   "signIn": [

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { Projectinterface } from '../projectinterface';
 import { ProjectjsonService } from '../projectjson.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,17 +18,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export class DashboardComponent implements OnInit, AfterViewInit {
 
   allprojects: Projectinterface[] = [];
-  totalLength: number = 0;
   editForm!: FormGroup;
-  currentPage: number = 1;
-  itemsPerPage: number = 13;
-  totalPages = 0;
-  pages: number[] = [];
-  pagedProjects: Projectinterface[] = [];
 
   dataSource = new MatTableDataSource<Projectinterface>();
-  displayedColumns: string[] = ['name', 'description', 'status', 'department', 'date', 'action', 'changeStatus'];
+  displayedColumns: string[] = ['name', 'description', 'department', 'date','status', 'action', 'changeStatus'];
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   selectedItem: any = null; // Initialize selectedItem here
 
@@ -40,6 +36,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   formdata: Projectinterface = {
@@ -68,30 +65,17 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.loadProjects(); // Load the current page of projects
   }
 
+  FilterChange(event:Event){
+    const filValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter=filValue
+  }
+
   loadProjects(): void {
     this.projectjsonservice.getAll().subscribe((data) => {
       this.allprojects = data;
-      this.totalLength = data.length;
-      // Calculate total pages and generate page numbers
-      this.totalPages = Math.ceil(this.totalLength / this.itemsPerPage);
-      this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-      this.goToPage(1); // Load the first page explicitly after updating data
+      console.log(data)
+      this.dataSource.data = data; // Assign fetched data to dataSource
     });
-  }
-  
-
-  goToPage(pageNumber: number): void {
-    if (pageNumber >= 1 && pageNumber <= this.totalPages) {
-      this.currentPage = pageNumber;
-      this.loadPage(); // Load the projects for the current page
-      this.dataSource.data = this.pagedProjects; // Update the data source with the projects for the current page 
-    }
-  }
-  
-  loadPage(): void {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = Math.min(startIndex + this.itemsPerPage - 1, this.totalLength - 1);
-    this.pagedProjects = this.allprojects.slice(startIndex, endIndex + 1);
   }
 
   create(): void {
