@@ -136,7 +136,7 @@
       "description": "It is the project",
       "department": "Data",
       "location": "Maharashtra",
-      "status": "Cancelled",
+      "status": "Completed",
       "date": "2024-05-02",
       "time": "10:45"
     },
@@ -159,6 +159,106 @@
       "status": "In progress",
       "date": "2024-05-08",
       "time": "09:07"
+    },
+    {
+      "id": "256e",
+      "name": "Iron",
+      "description": "It is vary complecated project",
+      "department": "Data",
+      "location": "Punjab",
+      "status": "Registered",
+      "date": "2024-05-14",
+      "time": "13:44"
+    },
+    {
+      "id": "3c06",
+      "name": "Aluminium",
+      "description": "It is metalic project",
+      "department": "Devops",
+      "location": "Karnataka",
+      "status": "Registered",
+      "date": "2024-05-14",
+      "time": "13:45"
+    },
+    {
+      "id": "9037",
+      "name": "Rust",
+      "description": "it is acidic project",
+      "department": "Testing",
+      "location": "Maharashtra",
+      "status": "Registered",
+      "date": "2024-05-14",
+      "time": "13:46"
+    },
+    {
+      "id": "1b49",
+      "name": "Symboisys",
+      "description": "It is the College website",
+      "department": "Testing",
+      "location": "Delhi",
+      "status": "Registered",
+      "date": "2024-05-14",
+      "time": "13:46"
+    },
+    {
+      "id": "5ea2",
+      "name": "Sinhgad ",
+      "description": "it is college project",
+      "department": "Data",
+      "location": "Punjab",
+      "status": "Registered",
+      "date": "2024-05-14",
+      "time": "13:47"
+    },
+    {
+      "id": "23ca",
+      "name": "Unnad",
+      "description": "It is filmy project",
+      "department": "Data",
+      "location": "Karnataka",
+      "status": "Registered",
+      "date": "2024-05-14",
+      "time": "13:49"
+    },
+    {
+      "id": "a9e1",
+      "name": "Panvel",
+      "description": "it is the roadside project",
+      "department": "Testing",
+      "location": "Karnataka",
+      "status": "Registered",
+      "date": "2024-05-14",
+      "time": "13:49"
+    },
+    {
+      "id": "0ecf",
+      "name": "CNG",
+      "description": "it is the Gas station project",
+      "department": "Apps & Software",
+      "location": "Maharashtra",
+      "status": "Registered",
+      "date": "2024-05-14",
+      "time": "13:50"
+    },
+    {
+      "id": "8135",
+      "name": "LPG ",
+      "description": "It is the gas station project",
+      "department": "Testing",
+      "location": "Punjab",
+      "status": "Registered",
+      "date": "2024-05-14",
+      "time": "13:52"
+    },
+    {
+      "id": "6ef4",
+      "name": "Atlas group",
+      "description": "it is the confidential project",
+      "department": "Data",
+      "location": "Punjab",
+      "status": "Registered",
+      "date": "2024-05-14",
+      "time": "13:52"
     }
   ],
   "signIn": [
