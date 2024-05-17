@@ -107,32 +107,46 @@ export class GraphComponent implements OnInit {
   }
 
 
-  barChart = new Chart({
+   barChart = new Chart({
     chart: {
       type: 'column'
     },
     title: {
-      text: ''
+      text: 'Double Bar Chart'
     },
     xAxis: {
-      categories: ['Apples', 'Bananas', 'Oranges']
+      categories: ['Apps and Software', 'Devops', 'Data', 'Testing']
     },
     yAxis: {
       title: {
-        text: 'Number of Fruits'
+        text: 'Number of Projects'
+      }
+    },
+    plotOptions: {
+      column: {
+        grouping: true,
+        shadow: false,
+        borderWidth: 0
       }
     },
     series: [
       {
-        type:'column',
-        data:[
-          { name :'COVID 19', y:1, color: '#FF00FF'},
-          { name :'HIV AIDS', y:2, color: '#00FF00'},
-          { name :'EBOLA', y:3, color: '#808080'},
-        ]
-      }
+        name: 'Total',
+        type: 'column',
+        data: [9, 8, 8, 6],
+        color: '#a854f7'
+      },
+      {
+        name: 'Closed',
+        type: 'column',
+        data: [5, 3, 2, 4],
+        color: '#f7940a'
+      },
+      
     ]
   });
+ 
+  
 
   addprojects(): void{
     this.router.navigate(['Addproject'])
