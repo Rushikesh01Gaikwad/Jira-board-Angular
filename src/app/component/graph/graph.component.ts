@@ -13,10 +13,13 @@ export class GraphComponent implements OnInit {
   constructor(private router: Router, private projectJsonService: ProjectjsonService) {}
 
   allProject: any[] = [];
+  totalength = 0;
   pieChart: Chart = new Chart();
+  barChart: Chart = new Chart();
 
   ngOnInit(): void {
     this.initializePieChart();
+    this.initializeBarChart();
     this.loadData();
   }
 
@@ -62,10 +65,56 @@ export class GraphComponent implements OnInit {
     });
   }
 
+  initializeBarChart(): void {
+    const totalength = this.totalength; // Capture the total length
+    this.barChart = new Chart({
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Department wise Status'
+      },
+      xAxis: {
+        categories: ['Apps and Software', 'Devops', 'Data', 'Testing']
+      },
+      yAxis: {
+        title: {
+          text: 'Number of Projects'
+        },
+        tickInterval: 5,
+      },
+      
+      plotOptions: {
+        column: {
+          grouping: true,
+          shadow: false,
+          borderWidth: 0
+        }
+      },
+      series: [
+        {
+          name: 'Total',
+          type: 'column',
+          data: [],
+          color: '#a854f7'
+        },
+        {
+          name: 'Closed',
+          type: 'column',
+          data: [],
+          color: '#f7940a'
+        },
+      ]
+    });
+  }
+
   loadData(): void {
     this.projectJsonService.getAll().subscribe((data) => {
       const statusCounts = this.getCountsByStatus(data);
+      this.totalength = data.length;
+      console.log(this.totalength)
       this.updatePieChartData(statusCounts);
+      this.updateBarChartData(data);
     });
   }
 
@@ -106,57 +155,55 @@ export class GraphComponent implements OnInit {
     }
   }
 
+  updateBarChartData(data: any[]): void {
+    const departments = ['Apps & Software', 'Devops', 'Data', 'Testing'];
+    const totalCounts: { [department: string]: number } = {
+      'Apps & Software': 0,
+      'Devops': 0,
+      'Data': 0,
+      'Testing': 0
+    };
+    const closedCounts: { [department: string]: number } = {
+      'Apps & Software': 0,
+      'Devops': 0,
+      'Data': 0,
+      'Testing': 0
+    };
 
-   barChart = new Chart({
-    chart: {
-      type: 'column'
-    },
-    title: {
-      text: 'Double Bar Chart'
-    },
-    xAxis: {
-      categories: ['Apps and Software', 'Devops', 'Data', 'Testing']
-    },
-    yAxis: {
-      title: {
-        text: 'Number of Projects'
+    data.forEach((item) => {
+      const department = item.department;
+      if (totalCounts.hasOwnProperty(department)) {
+        totalCounts[department]++;
+        if (item.status === 'Completed') {
+          closedCounts[department]++;
+        }
       }
-    },
-    plotOptions: {
-      column: {
-        grouping: true,
-        shadow: false,
-        borderWidth: 0
-      }
-    },
-    series: [
-      {
-        name: 'Total',
-        type: 'column',
-        data: [9, 8, 8, 6],
-        color: '#a854f7'
-      },
-      {
-        name: 'Closed',
-        type: 'column',
-        data: [5, 3, 2, 4],
-        color: '#f7940a'
-      },
-      
-    ]
-  });
- 
-  
+    });
 
-  addprojects(): void{
-    this.router.navigate(['Addproject'])
+    const totalData = departments.map(dept => totalCounts[dept]);
+    const closedData = departments.map(dept => closedCounts[dept]);
+
+    if (this.barChart.ref) {
+      const totalSeries = this.barChart.ref.series[0];
+      const closedSeries = this.barChart.ref.series[1];
+      if (totalSeries) {
+        totalSeries.setData(totalData, true);
+      }
+      if (closedSeries) {
+        closedSeries.setData(closedData, true);
+      }
+    }
   }
 
-  loginpage(): void{
-    this.router.navigate(['/'])
+  addprojects(): void {
+    this.router.navigate(['Addproject']);
   }
 
-  home(): void{
-    this.router.navigate(['Dashboard'])
+  loginpage(): void {
+    this.router.navigate(['/']);
+  }
+
+  home(): void {
+    this.router.navigate(['Dashboard']);
   }
 }

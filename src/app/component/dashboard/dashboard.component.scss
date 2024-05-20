@@ -13,7 +13,7 @@
   justify-content: center;
   width: 4%; /* Width of the sidebar */
   background-color: #05b471;
-  height: 92vh;
+  height: 78vh;
 }
 
 .sidebar-containt {
@@ -23,13 +23,18 @@
 
 .dash-containt {
   width: 96%;
-  padding-top: 30px;
+  padding-top: 20px;
+}
+
+.borderSearch{
+  border: 2px solid green;
+  border-radius: 8px;
 }
 
 .main-containt {
   margin-left: 1vw;
   margin-right: 1vw;
-  height: 34vw; /* Set the desired height */
+  height: 27vw; /* Set the desired height */
   overflow: auto;
 }
 

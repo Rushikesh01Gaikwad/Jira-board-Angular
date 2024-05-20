@@ -26,6 +26,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { SearchPipe } from './pipe/search.pipe';
+import { FooterComponent } from './component/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SearchPipe } from './pipe/search.pipe';
     AddprojectComponent,
     CardsComponent,
     SearchPipe,
+    FooterComponent,
   ],
   
   imports: [
