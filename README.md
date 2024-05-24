@@ -1,6 +1,7 @@
 # Output
  This is all project is in anguler typescript.
  I am using the json server to fetch the data.
+ 
 ![dashboard](https://github.com/Rushikesh01Gaikwad/Jeera/assets/136779452/09b496ae-8efe-44a9-b181-bd707117c8c1)
 This is Dashboard Page. It shows the
 1. How many projects are registered. and also show the states of the project.
@@ -12,6 +13,7 @@ This is Dashboard Page. It shows the
    4. On the x-axis it show the percentage of the each department. 
    5. The percentage which are shown in the x-axis is how many project are in department and how many projects are closed.
    6. It calculate they by formula and it shows in the percenatage.
+
 
 ![Listing](https://github.com/Rushikesh01Gaikwad/Jeera/assets/136779452/f8560a38-422b-4634-b751-1a301d4bf363)
 This is project listing page.
