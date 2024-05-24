@@ -1,7 +1,8 @@
 # Output
  This is all project is in anguler typescript.
  I am using the json server to fetch the data.
- 
+
+### Dashboard:
 ![dashboard](https://github.com/Rushikesh01Gaikwad/Jeera/assets/136779452/09b496ae-8efe-44a9-b181-bd707117c8c1)
 This is Dashboard Page. It shows the
 1. How many projects are registered. and also show the states of the project.
@@ -15,6 +16,7 @@ This is Dashboard Page. It shows the
    6. It calculate they by formula and it shows in the percenatage.
 
 
+### Project List: 
 ![Listing](https://github.com/Rushikesh01Gaikwad/Jeera/assets/136779452/f8560a38-422b-4634-b751-1a301d4bf363)
 This is project listing page.
 In this tab i am created multiple functionality like searching, sorting, filter, pagination etc.
@@ -25,6 +27,7 @@ and the last row i am displayed the change_status column.
   2. Lastly i am displayed the pagination. If you have multiple project list then you can use the pagination.
 
 
+### Add Project:
 ![addproject](https://github.com/Rushikesh01Gaikwad/Jeera/assets/136779452/9f8440ab-87fe-4d9c-b410-e491502f4c36)
 This is the add project Page.
 In this page i am putting all the validations and puts the some by default values to input fields.
