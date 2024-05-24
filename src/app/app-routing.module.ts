@@ -7,12 +7,12 @@ import { AddprojectComponent } from './component/addproject/addproject.component
 
 const routes: Routes = [
   {
-    path:'',
-    component:DashboardComponent,
+    path: "",
+    component:GraphComponent,
   },
   {
-    path: "Graph",
-    component:GraphComponent,
+    path:'Dashboard',
+    component:DashboardComponent,
   },
   {
     path: "status",
