@@ -1,35 +1,33 @@
 # Output
- This is all project is in anguler typescript.
- I am using the json server to fetch the data.
 
 ### Dashboard:
 ![dashboard](https://github.com/Rushikesh01Gaikwad/Jeera/assets/136779452/09b496ae-8efe-44a9-b181-bd707117c8c1)
-This is Dashboard Page. It shows the
-1. How many projects are registered. and also show the states of the project.
-2. The first pie chart show the states of the project in the graphical flow.
-3. The second bar chart show the department wise data. means there are multiple departments.
-   1. Apps and software, Data, Devops and Testing
-   2. The first Blue bar show the how many project department is 'apps and software'
-   3. The second Orange bar show the how many project states is completed. 
-   4. On the x-axis it show the percentage of the each department. 
-   5. The percentage which are shown in the x-axis is how many project are in department and how many projects are closed.
-   6. It calculate they by formula and it shows in the percenatage.
+
+1. The total number of registered projects, along with their current statuses.
+2. The first pie chart displays the distribution of project statuses graphically.
+3. The second bar chart presents data by department, covering multiple departments such as Apps and Software, Data, DevOps, and Testing.
+    1. The first blue bar represents the number of projects in the 'Apps and Software' department.
+    2. The second orange bar shows the number of completed projects.
+    3. The x-axis displays the percentage for each department.
+    4. The percentages on the x-axis represent the proportion of projects within each department that are completed, calculated using a specific formula and presented as percentages.
 
 
 ### Project List: 
 ![Listing](https://github.com/Rushikesh01Gaikwad/Jeera/assets/136779452/f8560a38-422b-4634-b751-1a301d4bf363)
-This is project listing page.
-In this tab i am created multiple functionality like searching, sorting, filter, pagination etc.
-Firstly it shows the whole projects listing on the json server.
-Then i am using here action button this action button is used for edit and delete the project.
-and the last row i am displayed the change_status column.
-  1. If you want to change the status you can change it.
-  2. Lastly i am displayed the pagination. If you have multiple project list then you can use the pagination.
+This is the Project Listing Page. 
+This page includes several functionalities such as searching, sorting, filtering, and pagination.
+
+1. Initially, it displays the complete list of projects from the JSON server.
+2. Action buttons are provided for each project to allow editing and deleting.
+3. The last column, "Change Status," allows you to update the status of each project.
+4. Pagination is implemented at the bottom of the page to navigate through multiple project listings if there are many projects.
 
 
 ### Add Project:
 ![addproject](https://github.com/Rushikesh01Gaikwad/Jeera/assets/136779452/9f8440ab-87fe-4d9c-b410-e491502f4c36)
-This is the add project Page.
-In this page i am putting all the validations and puts the some by default values to input fields.
-You have to put only a name, description of the project, Location and department.
-and other input fields like date, time and status are by defult values. you cannot change it.
+
+This is the Add Project Page. 
+On this page, all necessary validations are in place, and some input fields have default values.
+
+You need to enter only the project name, description, location, and department. 
+Other input fields, such as date, time, and status, have default values and cannot be changed.
