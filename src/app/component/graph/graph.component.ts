@@ -66,7 +66,6 @@ export class GraphComponent implements OnInit {
   }
 
   initializeBarChart(): void {
-    const totalength = this.totalength; // Capture the total length
     this.barChart = new Chart({
       chart: {
         type: 'column'
@@ -75,7 +74,7 @@ export class GraphComponent implements OnInit {
         text: 'Department wise Status'
       },
       xAxis: {
-        categories: ['Apps and Software', 'Devops', 'Data', 'Testing']
+        categories: ['Apps & Software', 'Devops', 'Data', 'Testing'] // Initial categories without percentages
       },
       yAxis: {
         title: {
@@ -83,7 +82,6 @@ export class GraphComponent implements OnInit {
         },
         tickInterval: 5,
       },
-      
       plotOptions: {
         column: {
           grouping: true,
@@ -106,13 +104,14 @@ export class GraphComponent implements OnInit {
         },
       ]
     });
-  }
+}
+
+
 
   loadData(): void {
     this.projectJsonService.getAll().subscribe((data) => {
       const statusCounts = this.getCountsByStatus(data);
       this.totalength = data.length;
-      console.log(this.totalength)
       this.updatePieChartData(statusCounts);
       this.updateBarChartData(data);
     });
@@ -183,7 +182,23 @@ export class GraphComponent implements OnInit {
     const totalData = departments.map(dept => totalCounts[dept]);
     const closedData = departments.map(dept => closedCounts[dept]);
 
+    // Calculate percentages
+    const percentages = departments.map(dept => {
+      const total = totalCounts[dept];
+      const closed = closedCounts[dept];
+      return total > 0 ? ((closed / total) * 100).toFixed(1) : '0.00';
+    });
+
+    // Update x-axis labels with percentages
+    const updatedCategories = departments.map((dept, index) => `${dept} (${percentages[index]}%)`);
+
     if (this.barChart.ref) {
+      this.barChart.ref.update({
+        xAxis: {
+          categories: updatedCategories
+        }
+      });
+
       const totalSeries = this.barChart.ref.series[0];
       const closedSeries = this.barChart.ref.series[1];
       if (totalSeries) {
@@ -193,7 +208,9 @@ export class GraphComponent implements OnInit {
         closedSeries.setData(closedData, true);
       }
     }
-  }
+}
+
+
 
   addprojects(): void {
     this.router.navigate(['Addproject']);
