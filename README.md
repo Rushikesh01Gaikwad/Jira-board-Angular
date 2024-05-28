@@ -1,7 +1,7 @@
 # Output
 This project allows users to add or update project details. It also enables monitoring the total number of projects along with their statuses, including in-progress, completed, and cancelled. Users can view the status distribution through graphical representations. The graphical format helps in easily visualizing the current state of all projects.
 ### Dashboard:
-![dashboard](https://github.com/Rushikesh01Gaikwad/Jeera/assets/136779452/09b496ae-8efe-44a9-b181-bd707117c8c1)
+![dashboard](https://github.com/Rushikesh01Gaikwad/Jira-board-Angular/assets/136779452/0a71c625-9f9a-4541-95e8-330e7af726ae)
 
 1. The total number of registered projects, along with their current statuses.
 2. The first pie chart displays the distribution of project statuses graphically.
