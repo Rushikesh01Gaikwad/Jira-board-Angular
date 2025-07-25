@@ -4,23 +4,28 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { GraphComponent } from './component/graph/graph.component';
 import { StatusComponent } from './component/status/status.component';
 import { AddprojectComponent } from './component/addproject/addproject.component';
+import { LoginComponent } from './component/login/login.component';
 
 const routes: Routes = [
   {
     path: "",
-    component:GraphComponent,
+    component: LoginComponent,
   },
   {
-    path:'Dashboard',
-    component:DashboardComponent,
+    path: "dashboard",
+    component: GraphComponent,
+  },
+  {
+    path: 'Dashboard',
+    component: DashboardComponent,
   },
   {
     path: "status",
-    component:StatusComponent,
+    component: StatusComponent,
   },
   {
     path: "add",
-    component:AddprojectComponent,
+    component: AddprojectComponent,
   }
 ];
 

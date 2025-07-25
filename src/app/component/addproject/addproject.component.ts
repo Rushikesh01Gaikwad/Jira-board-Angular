@@ -21,9 +21,9 @@ export class AddprojectComponent implements OnInit {
     time: [this.getCurrentTime(), Validators.required]
   });
 
-  constructor(private projectService: ProjectjsonService, 
-              private formBuilder: FormBuilder,
-              private router: Router) { }
+  constructor(private projectService: ProjectjsonService,
+    private formBuilder: FormBuilder,
+    private router: Router) { }
 
   ngOnInit(): void {
     // You can remove the form initialization from here since it's already initialized above

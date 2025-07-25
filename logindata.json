@@ -1,8 +1,0 @@
-{
-    "logindata":
-    [
-        { "id": 1, "username": "Rushikesh", "password": "Rushi@123" },
-        { "id": 2, "username": "Nikhil", "password": "Nikhil@123" }
-    ]
-        
-}

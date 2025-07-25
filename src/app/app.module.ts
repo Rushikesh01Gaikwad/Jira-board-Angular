@@ -26,6 +26,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { FooterComponent } from './component/footer/footer.component';
 import { SidbarComponent } from './component/sidbar/sidbar.component';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SidbarComponent } from './component/sidbar/sidbar.component';
     CardsComponent,
     FooterComponent,
     SidbarComponent,
+    LoginComponent,
   ],
   
   imports: [
