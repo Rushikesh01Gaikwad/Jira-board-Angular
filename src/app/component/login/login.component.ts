@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProjectjsonService } from '../projectjson.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: ProjectjsonService) {
+  constructor(private fb: FormBuilder, private http: ProjectjsonService, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
@@ -35,7 +36,7 @@ export class LoginComponent {
       this.http.add(this.loginForm.value).subscribe({
         next: (res: any) => {
           if (res.status_cd == 1) {
-
+            this.router.navigate(['/dashboard']);
           }
           else if (res.status_cd == 0) {
 
