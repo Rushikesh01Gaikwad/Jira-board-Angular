@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProjectjsonService } from '../projectjson.service';
 import { Router } from '@angular/router';
+import { AuthTokenService } from '../auth-token.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: ProjectjsonService, private router: Router) {
+  constructor(private fb: FormBuilder, private http: ProjectjsonService, private router: Router, private authTokenService: AuthTokenService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
@@ -33,9 +34,10 @@ export class LoginComponent {
 
   onLogin() {
     if (this.loginForm.valid) {
-      this.http.add(this.loginForm.value).subscribe({
+      this.http.add(`login/login`, this.loginForm.value).subscribe({
         next: (res: any) => {
           if (res.status_cd == 1) {
+            this.authTokenService.setToken(res.data.token);
             this.router.navigate(['/dashboard']);
           }
           else if (res.status_cd == 0) {
@@ -51,7 +53,7 @@ export class LoginComponent {
 
   onRegister() {
     if (this.registerForm.valid) {
-      this.http.add(this.registerForm.value).subscribe({
+      this.http.add(`User/Insert`, this.registerForm.value).subscribe({
         next: (res: any) => {
           if (res.status_cd == 1) {
 
