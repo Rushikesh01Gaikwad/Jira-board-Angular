@@ -37,7 +37,7 @@ export class LoginComponent {
       this.http.add(`login/login`, this.loginForm.value).subscribe({
         next: (res: any) => {
           if (res.status_cd == 1) {
-            this.authTokenService.setToken(res.data.token);
+            this.authTokenService.setToken(res.data.token, res.data.refreshToken);
             this.router.navigate(['/dashboard']);
           }
           else if (res.status_cd == 0) {
