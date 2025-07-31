@@ -5,17 +5,27 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthTokenService {
-  private token: string = '';
+  private accessToken: string = '';
+  private expiration: Date | null = null;
+  private refreshToken: string = '';
 
-  setToken(token: string): void {
-    this.token = token;
+  setToken(token: any): void {
+    this.accessToken = token.accessToken;
+    this.expiration = token.expiration;
+    this.refreshToken = token.refreshToken;
   }
 
-  getToken(): string {
-    return this.token;
+  getAccessToken(): string {
+    return this.accessToken;
+  }
+  getRefreshToken(): string {
+    return this.refreshToken;
+  }
+  getExpiration() {
+    return this.expiration;
   }
 
   clearToken(): void {
-    this.token = '';
+    this.accessToken = '';
   }
 }
