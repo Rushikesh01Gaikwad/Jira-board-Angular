@@ -18,19 +18,19 @@ export class CardsComponent implements OnInit {
   comp_count = 0;
   canc_count = 0;
 
-  constructor (private router: Router, private projectjsonservice: ProjectjsonService) {}
+  constructor(private router: Router, private projectjsonservice: ProjectjsonService) { }
   ngOnInit(): void {
     this.loadProjects();
   }
 
   loadProjects(): void {
-    this.projectjsonservice.getAll().subscribe((data) => {
+    this.projectjsonservice.getAll('projectData/Get').subscribe((data) => {
       this.dataSource.data = data; // Assign data to dataSource
       this.totalLength = data.length;
       this.updateCounts();
     });
   }
-  
+
 
   updateCounts(): void {
     this.reg_count = this.getCountByStatus('Registered');

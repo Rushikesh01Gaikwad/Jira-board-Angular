@@ -50,7 +50,7 @@ export class AddprojectComponent implements OnInit {
   create() {
     if (this.projectForm.valid) {
       this.formData = this.projectForm.value;
-      this.projectService.add(this.formData).subscribe((response) => {
+      this.projectService.post('projectData/Insert', this.formData).subscribe((response) => {
         console.log('Record added successfully:', response);
         this.router.navigate(['/Dashboard'])
       }, (error) => {

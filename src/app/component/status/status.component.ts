@@ -37,7 +37,7 @@ export class StatusComponent implements AfterViewInit, OnInit {
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
     private projectservice: ProjectjsonService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadProjects();
@@ -61,7 +61,7 @@ export class StatusComponent implements AfterViewInit, OnInit {
   }
 
   create(): void {
-    this.projectservice.add(this.formdata).subscribe({
+    this.projectservice.post('projectData/Insert', this.formdata).subscribe({
       next: () => {
         this.loadProjects();
         this.clearFormData();
@@ -73,7 +73,7 @@ export class StatusComponent implements AfterViewInit, OnInit {
   }
 
   loadProjects(): void {
-    this.projectservice.getAll().subscribe((data: Projectinterface[]) => {
+    this.projectservice.getAll('projectData/Get').subscribe((data: Projectinterface[]) => {
       this.dataSource.data = data;
       this.updateCounts();
     });

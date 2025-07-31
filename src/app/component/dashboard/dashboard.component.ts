@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { Projectinterface } from '../projectinterface';
 import { ProjectjsonService } from '../projectjson.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   editForm!: FormGroup;
 
   dataSource = new MatTableDataSource<Projectinterface>();
-  displayedColumns: string[] = ['name', 'description', 'department', 'date','status', 'action', 'changeStatus'];
+  displayedColumns: string[] = ['name', 'description', 'department', 'date', 'status', 'action', 'changeStatus'];
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private projectjsonservice: ProjectjsonService,
     private _liveAnnouncer: LiveAnnouncer,
     private formBuilder: FormBuilder,
-  ) {}
+  ) { }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
@@ -65,13 +65,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.loadProjects(); // Load the current page of projects
   }
 
-  FilterChange(event:Event){
+  FilterChange(event: Event) {
     const filValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter=filValue
+    this.dataSource.filter = filValue
   }
 
   loadProjects(): void {
-    this.projectjsonservice.getAll().subscribe((data) => {
+    this.projectjsonservice.getAll('projectData/Get').subscribe((data) => {
       this.allprojects = data;
       console.log(data)
       this.dataSource.data = data; // Assign fetched data to dataSource
@@ -79,7 +79,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   create(): void {
-    this.projectjsonservice.add(this.formdata).subscribe({
+    this.projectjsonservice.post('', this.formdata).subscribe({
       next: (data) => {
         this.loadProjects();
       },
@@ -107,27 +107,27 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.editForm.patchValue({
       name: item.name,
       description: item.description
-  });
+    });
   }
 
   editItem(): void {
     const editedItem = {
-        ...this.selectedItem,
-        name: this.editForm.value.name,
-        description: this.editForm.value.description
+      ...this.selectedItem,
+      name: this.editForm.value.name,
+      description: this.editForm.value.description
     };
 
-    this.projectjsonservice.update(editedItem).subscribe({
-        next: (res) => {
-            this.loadProjects();
-        },
-        error: console.error // Use console.error to log errors
+    this.projectjsonservice.update('projectData/Update', editedItem).subscribe({
+      next: (res) => {
+        this.loadProjects();
+      },
+      error: console.error // Use console.error to log errors
     });
   }
 
   deleteItem(item: any): void {
     if (!item) return; // Ensure there is a selected item
-    this.projectjsonservice.delete(item.id).subscribe({
+    this.projectjsonservice.delete('projectData/delete', item.id).subscribe({
       next: (res) => {
         this.loadProjects();
       },
@@ -138,17 +138,17 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   changeStatus(item: any, newStatus: string): void {
     // Prepare the updated item with new status
     const updatedItem = {
-        ...item,
-        status: newStatus
+      ...item,
+      status: newStatus
     };
 
     // Call the service's update method with the updated item
-    this.projectjsonservice.update(updatedItem).subscribe({
-        next: (res) => {
-            // Reload projects after successful update
-            this.loadProjects();
-        },
-        error: console.error // Log errors to console
+    this.projectjsonservice.update('projectData/Update', updatedItem).subscribe({
+      next: (res) => {
+        // Reload projects after successful update
+        this.loadProjects();
+      },
+      error: console.error // Log errors to console
     });
   }
 }

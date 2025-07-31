@@ -15,7 +15,7 @@ export class ProjectjsonService {
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.authTokenService.getToken()}`
+      //'Authorization': `Bearer ${this.authTokenService.getToken()}`
     })
   };
 
@@ -23,7 +23,11 @@ export class ProjectjsonService {
     return this.httpClient.get<Projectinterface[]>(`${this.baseUrl}${url}`, this.httpOptions);
   }
 
-  add(url: string, record: Projectinterface) {
+  get(url: string, record?: any): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}${url}`, { params: record, headers: this.httpOptions.headers });
+  }
+
+  post(url: string, record: Projectinterface) {
     return this.httpClient.post(`${this.baseUrl}${url}`, record, this.httpOptions);
   }
 
