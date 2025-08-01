@@ -1,10 +1,15 @@
 // auth-token.service.ts
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthTokenService {
+
+  constructor(private http: HttpClient) { }
+
   private accessToken: string = '';
   private expiration: Date | null = null;
   private refreshToken: string = '';
@@ -14,6 +19,7 @@ export class AuthTokenService {
     this.expiration = token.expiration;
     this.refreshToken = token.refreshToken;
   }
+  
 
   getAccessToken(): string {
     return this.accessToken;
@@ -21,11 +27,21 @@ export class AuthTokenService {
   getRefreshToken(): string {
     return this.refreshToken;
   }
-  getExpiration() {
-    return this.expiration;
+  
+  isTokenExpired(): boolean {
+    if (!this.expiration) return true;
+    return new Date() > this.expiration;
   }
 
   clearToken(): void {
     this.accessToken = '';
   }
+
+  refreshTokenRequest(): Observable<any> {
+  return this.http.post('http://localhost:5227/api/Login/refresh-token', {
+    accessToken: this.getAccessToken(),
+    refreshToken: this.getRefreshToken(),
+  });
+}
+
 }
