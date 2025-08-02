@@ -15,9 +15,9 @@ export class AuthTokenService {
   private refreshToken: string = '';
 
   setToken(token: any): void {
-    this.accessToken = token.accessToken;
-    this.expiration = token.expiration;
-    this.refreshToken = token.refreshToken;
+    this.accessToken = token.AccessToken;
+    this.expiration = token.Expiration;
+    this.refreshToken = token.RefreshToken;
   }
   
 
@@ -35,13 +35,15 @@ export class AuthTokenService {
 
   clearToken(): void {
     this.accessToken = '';
+    this.expiration = null;
+    this.refreshToken = '';
   }
 
-  refreshTokenRequest(): Observable<any> {
-  return this.http.post('http://localhost:5227/api/Login/refresh-token', {
-    accessToken: this.getAccessToken(),
-    refreshToken: this.getRefreshToken(),
-  });
-}
+//   refreshTokenRequest(): Observable<any> {
+//   return this.http.post('http://localhost:5227/api/Login/refresh-token', {
+//     accessToken: this.getAccessToken(),
+//     refreshToken: this.getRefreshToken(),
+//   });
+// }
 
 }
