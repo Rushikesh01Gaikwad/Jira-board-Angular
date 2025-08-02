@@ -10,7 +10,7 @@ import { ProjectjsonService } from '../projectjson.service';
 })
 export class GraphComponent implements OnInit {
 
-  constructor(private router: Router, private projectJsonService: ProjectjsonService) {}
+  constructor(private router: Router, private projectJsonService: ProjectjsonService) { }
 
   allProject: any[] = [];
   totalength = 0;
@@ -104,12 +104,12 @@ export class GraphComponent implements OnInit {
         },
       ]
     });
-}
+  }
 
 
 
   loadData(): void {
-    this.projectJsonService.getAll().subscribe((data) => {
+    this.projectJsonService.getAll('projectData/Get').subscribe((data) => {
       const statusCounts = this.getCountsByStatus(data);
       this.totalength = data.length;
       this.updatePieChartData(statusCounts);
@@ -208,7 +208,7 @@ export class GraphComponent implements OnInit {
         closedSeries.setData(closedData, true);
       }
     }
-}
+  }
 
 
 

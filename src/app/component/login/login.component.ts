@@ -34,18 +34,20 @@ export class LoginComponent {
 
   onLogin() {
     if (this.loginForm.valid) {
-      this.http.add(`login/login`, this.loginForm.value).subscribe({
+      this.http.get(`Login/Login`, this.loginForm.value).subscribe({
         next: (res: any) => {
-          if (res.status_cd == 1) {
-            this.authTokenService.setToken(res.data.token, res.data.refreshToken);
+
+          if (res.statusCd == 1) {
+            this.authTokenService.setToken(res.data.token);
             this.router.navigate(['/dashboard']);
           }
-          else if (res.status_cd == 0) {
+          else if (res.statusCd == 0) {
+            alert(res.message); // or handle error
 
           }
 
         }, error: (err: any) => {
-
+          console.error('Login error:', err);
         }
       })
     }
@@ -53,11 +55,11 @@ export class LoginComponent {
 
   onRegister() {
     if (this.registerForm.valid) {
-      this.http.add(`User/Insert`, this.registerForm.value).subscribe({
+      this.http.post(`User/Insert`, this.registerForm.value).subscribe({
         next: (res: any) => {
-          if (res.status_cd == 1) {
+          if (res.statusCd == 1) {
 
-          } else if (res.status_cd == 0) {
+          } else if (res.statusCd == 0) {
 
           }
         },

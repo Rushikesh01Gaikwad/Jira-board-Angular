@@ -65,6 +65,7 @@ import { LoginComponent } from './component/login/login.component';
   ],
   providers: [
     provideAnimationsAsync(),
+    
   ],
   bootstrap: [AppComponent]
 })
