@@ -36,6 +36,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.http.get(`Login/Login`, this.loginForm.value).subscribe({
         next: (res: any) => {
+
           if (res.statusCd == 1) {
             this.authTokenService.setToken(res.data.token);
             this.router.navigate(['/dashboard']);

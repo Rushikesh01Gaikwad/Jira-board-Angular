@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthTokenService {
 
+
   constructor(private http: HttpClient) { }
 
   private accessToken: string = '';
@@ -33,9 +34,15 @@ export class AuthTokenService {
     return new Date() > this.expiration;
   }
 
+  getRefreshToken(): string {
+    return this.refreshToken;
+  }
+
   clearToken(): void {
+
     this.accessToken = '';
     this.expiration = null;
+
     this.refreshToken = '';
   }
 
