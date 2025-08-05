@@ -24,7 +24,7 @@ export class ProjectjsonService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.authTokenService.getAccessToken()}`
     };
-    return this.httpClient.get<Projectinterface[]>(`${this.baseUrl}${url}`, {headers: header});
+    return this.httpClient.get(`${this.baseUrl}${url}`, { headers: header });
   }
 
   get(url: string, record?: any): Observable<any> {
@@ -40,7 +40,7 @@ export class ProjectjsonService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.authTokenService.getAccessToken()}`
     };
-    return this.httpClient.post(`${this.baseUrl}${url}`, {record, headers: header});
+    return this.httpClient.post(`${this.baseUrl}${url}`, { record, headers: header });
   }
 
   update(url: string, data: any) {
@@ -49,7 +49,7 @@ export class ProjectjsonService {
       'Authorization': `Bearer ${this.authTokenService.getAccessToken()}`
     };
     //return this.httpClient.put<Projectinterface>('http://localhost:3000/projectData/' + data.id, data);
-    return this.httpClient.put<Projectinterface>(`${this.baseUrl}${url}` + data.id, {data, headers: header});
+    return this.httpClient.put<Projectinterface>(`${this.baseUrl}${url}` + data.id, { data, headers: header });
   }
 
   delete(url: string, data: any) {
@@ -58,7 +58,7 @@ export class ProjectjsonService {
       'Authorization': `Bearer ${this.authTokenService.getAccessToken()}`
     };
     //return this.httpClient.delete(`http://localhost:3000/projectData/${data}`);
-    return this.httpClient.delete(`${this.baseUrl}${url}` + data.id, {headers: header});
+    return this.httpClient.delete(`${this.baseUrl}${url}` + data.id, { headers: header });
   }
 
 }

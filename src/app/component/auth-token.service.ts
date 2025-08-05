@@ -16,11 +16,11 @@ export class AuthTokenService {
   private refreshToken: string = '';
 
   setToken(token: any): void {
-    this.accessToken = token.AccessToken;
-    this.expiration = token.Expiration;
-    this.refreshToken = token.RefreshToken;
+    this.accessToken = token.accessToken;
+    this.expiration = token.expiration;
+    this.refreshToken = token.refreshToken;
   }
-  
+
 
   getAccessToken(): string {
     return this.accessToken;
@@ -28,29 +28,24 @@ export class AuthTokenService {
   getRefreshToken(): string {
     return this.refreshToken;
   }
-  
+
   isTokenExpired(): boolean {
     if (!this.expiration) return true;
     return new Date() > this.expiration;
-  }
-
-  getRefreshToken(): string {
-    return this.refreshToken;
   }
 
   clearToken(): void {
 
     this.accessToken = '';
     this.expiration = null;
-
     this.refreshToken = '';
   }
 
-//   refreshTokenRequest(): Observable<any> {
-//   return this.http.post('http://localhost:5227/api/Login/refresh-token', {
-//     accessToken: this.getAccessToken(),
-//     refreshToken: this.getRefreshToken(),
-//   });
-// }
+  //   refreshTokenRequest(): Observable<any> {
+  //   return this.http.post('http://localhost:5227/api/Login/refresh-token', {
+  //     accessToken: this.getAccessToken(),
+  //     refreshToken: this.getRefreshToken(),
+  //   });
+  // }
 
 }

@@ -109,12 +109,23 @@ export class GraphComponent implements OnInit {
 
 
   loadData(): void {
-    this.projectJsonService.getAll('projectData/Get').subscribe((data) => {
-      const statusCounts = this.getCountsByStatus(data);
-      this.totalength = data.length;
-      this.updatePieChartData(statusCounts);
-      this.updateBarChartData(data);
-    });
+    // this.projectJsonService.getAll('projectData/Get').subscribe((data) => {
+    //   const statusCounts = this.getCountsByStatus(data);
+    //   this.totalength = data.length;
+    //   this.updatePieChartData(statusCounts);
+    //   this.updateBarChartData(data);
+    // });
+    this.projectJsonService.getAll('projectData/Get').subscribe({
+      next: (res: any) => {
+        this.allProject = res.data;
+        const statusCounts = this.getCountsByStatus(this.allProject);
+        this.totalength = this.allProject.length;
+        this.updatePieChartData(statusCounts);
+        this.updateBarChartData(this.allProject);
+      }, error: (err: any) => {
+        console.error('Error fetching project data:', err);
+      }
+    })
   }
 
   getCountsByStatus(data: any[]): { [status: string]: number } {

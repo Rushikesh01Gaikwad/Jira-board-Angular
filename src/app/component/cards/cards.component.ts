@@ -24,7 +24,7 @@ export class CardsComponent implements OnInit {
   }
 
   loadProjects(): void {
-    this.projectjsonservice.getAll('projectData/Get').subscribe((data) => {
+    this.projectjsonservice.getAll('projectData/Get').subscribe((data: any) => {
       this.dataSource.data = data; // Assign data to dataSource
       this.totalLength = data.length;
       this.updateCounts();

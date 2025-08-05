@@ -71,7 +71,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   loadProjects(): void {
-    this.projectjsonservice.getAll('projectData/Get').subscribe((data) => {
+    this.projectjsonservice.getAll('projectData/Get').subscribe((data: any) => {
       this.allprojects = data;
       console.log(data)
       this.dataSource.data = data; // Assign fetched data to dataSource

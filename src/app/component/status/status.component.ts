@@ -73,7 +73,7 @@ export class StatusComponent implements AfterViewInit, OnInit {
   }
 
   loadProjects(): void {
-    this.projectservice.getAll('projectData/Get').subscribe((data: Projectinterface[]) => {
+    this.projectservice.getAll('projectData/Get').subscribe((data: any) => {
       this.dataSource.data = data;
       this.updateCounts();
     });
