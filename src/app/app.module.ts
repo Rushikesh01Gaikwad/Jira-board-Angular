@@ -28,6 +28,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { SidbarComponent } from './component/sidbar/sidbar.component';
 import { LoginComponent } from './component/login/login.component';
 import { AuthInterceptor } from './component/auth.interceptor';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { AuthInterceptor } from './component/auth.interceptor';
     CardsComponent,
     FooterComponent,
     SidbarComponent,
-    LoginComponent,
+    LoginComponent
   ],
 
   imports: [
@@ -63,10 +64,15 @@ import { AuthInterceptor } from './component/auth.interceptor';
     MatDividerModule,
     MatButtonModule,
     MatPaginator,
+    NgxUiLoaderModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     provideAnimationsAsync(),
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 
   ],
   bootstrap: [AppComponent]

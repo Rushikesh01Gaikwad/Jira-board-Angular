@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { AuthTokenService } from './auth-token.service';
 import { ProjectjsonService } from './projectjson.service';
 
+
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(
@@ -23,11 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const accessToken = this.authTokenService.getAccessToken();
-
-    const params = {
-      accessToken: accessToken,
-      refreshToken: this.authTokenService.getRefreshToken()
-    };
+    const refreshToken = this.authTokenService.getRefreshToken();
 
     const authReq = req.clone({
       setHeaders: {
@@ -36,9 +33,14 @@ export class AuthInterceptor implements HttpInterceptor {
       }
     });
 
+    const params = {
+      accessToken: accessToken,
+      refreshToken: refreshToken
+    };
+
     return next.handle(authReq).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 401 && !req.url.includes('refresh-token')) {
+        if (error.status === 401) {
           return this.http.post('Login/RefreshToken', params).pipe(
             switchMap((newToken: any) => {
               this.authTokenService.setToken(newToken);
