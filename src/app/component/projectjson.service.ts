@@ -49,7 +49,7 @@ export class ProjectjsonService {
       'Authorization': `Bearer ${this.authTokenService.getAccessToken()}`
     };
     //return this.httpClient.put<Projectinterface>('http://localhost:3000/projectData/' + data.id, data);
-    return this.httpClient.put<Projectinterface>(`${this.baseUrl}${url}` + data.id, { data, headers: header });
+    return this.httpClient.put(`${this.baseUrl}${url}/${data.id}`, data, { headers: header });
   }
 
   delete(url: string, data: any) {

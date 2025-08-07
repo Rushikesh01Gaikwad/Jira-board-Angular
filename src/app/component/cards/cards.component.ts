@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ProjectjsonService } from '../projectjson.service';
 import { Projectinterface } from '../projectinterface';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-cards',
@@ -18,15 +19,15 @@ export class CardsComponent implements OnInit {
   comp_count = 0;
   canc_count = 0;
 
-  constructor(private router: Router, private projectjsonservice: ProjectjsonService) { }
+  constructor(private router: Router, private projectjsonservice: ProjectjsonService, private loader: NgxUiLoaderService) { }
   ngOnInit(): void {
     this.loadProjects();
   }
 
   loadProjects(): void {
     this.projectjsonservice.getAll('projectData/Get').subscribe((data: any) => {
-      this.dataSource.data = data; // Assign data to dataSource
-      this.totalLength = data.length;
+      this.dataSource.data = data.data; // Assign data to dataSource
+      this.totalLength = data.data.length;
       this.updateCounts();
     });
   }

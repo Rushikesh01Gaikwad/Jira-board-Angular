@@ -9,6 +9,8 @@ import { ProjectjsonService } from '../projectjson.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { AlertService } from '../../alert.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-dashboard',
@@ -32,6 +34,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private projectjsonservice: ProjectjsonService,
     private _liveAnnouncer: LiveAnnouncer,
     private formBuilder: FormBuilder,
+    private alert: AlertService,
+    private loader: NgxUiLoaderService
   ) { }
 
   ngAfterViewInit(): void {
@@ -71,11 +75,16 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   loadProjects(): void {
+    this.loader.start(); // Start the loader
     this.projectjsonservice.getAll('projectData/Get').subscribe((data: any) => {
-      this.allprojects = data;
-      console.log(data)
-      this.dataSource.data = data; // Assign fetched data to dataSource
+      this.allprojects = data.data;
+      this.dataSource.data = data.data; // Assign fetched data to dataSource
+      this.loader.stop(); // Stop the loader
+    }, error => {
+      this.alert.error('Error loading projects', error); // Show error alert
+      this.loader.stop(); // Stop the loader even on error
     });
+
   }
 
   create(): void {
@@ -116,12 +125,18 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       name: this.editForm.value.name,
       description: this.editForm.value.description
     };
-
+    this.loader.start(); // Start the loader
     this.projectjsonservice.update('projectData/Update', editedItem).subscribe({
       next: (res) => {
+        this.loader.stop(); // Stop the loader
+        this.alert.success('Updated successful');
         this.loadProjects();
       },
-      error: console.error // Use console.error to log errors
+      error: (error) => {
+        this.loader.stop(); // Stop the loader even on error
+        this.alert.error('Error updating item');
+        console.error(error); // Log the error to console
+      }
     });
   }
 
