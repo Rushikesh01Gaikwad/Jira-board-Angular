@@ -5,6 +5,7 @@ import { ProjectjsonService } from '../projectjson.service';
 import { Router } from '@angular/router';
 import { AuthTokenService } from '../auth-token.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { AlertService } from '../../alert.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private loader: NgxUiLoaderService, private http: ProjectjsonService, private router: Router, private authTokenService: AuthTokenService) {
+  constructor(private fb: FormBuilder, private loader: NgxUiLoaderService, private alert: AlertService, private http: ProjectjsonService, private router: Router, private authTokenService: AuthTokenService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
@@ -46,31 +47,40 @@ export class LoginComponent {
 
           }
           else if (res.statusCd == 0) {
-            alert(res.message); // or handle error
             this.loader.stop();
+            this.alert.error(res.message, 'Login Failed');
 
           }
 
         }, error: (err: any) => {
           console.error('Login error:', err);
           this.loader.stop();
+          this.alert.error('An error occurred during login. Please try again.', 'Error');
         }
       })
+    }
+    else {
+      this.alert.warning('Please fill in all required fields correctly.', 'Validation Error');
     }
   }
 
   onRegister() {
+    this.loader.start();
     if (this.registerForm.valid) {
       this.http.post(`User/Insert`, this.registerForm.value).subscribe({
         next: (res: any) => {
           if (res.statusCd == 1) {
-
+            this.loader.stop();
+            this.isLogin = true;
+            this.alert.success('Registration successful! You can now log in.', 'Registration Success');
           } else if (res.statusCd == 0) {
-
+            this.loader.stop();
+            this.alert.error(res.message, 'Registration Failed');
           }
         },
         error: (err: any) => {
-
+          this.loader.stop();
+          this.alert.error('An error occurred during registration. Please try again.', 'Error');
         }
       });
     }

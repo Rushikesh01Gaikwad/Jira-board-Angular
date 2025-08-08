@@ -40,7 +40,7 @@ export class ProjectjsonService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.authTokenService.getAccessToken()}`
     };
-    return this.httpClient.post(`${this.baseUrl}${url}`, { record, headers: header });
+    return this.httpClient.post(`${this.baseUrl}${url}`, record, { headers: header });
   }
 
   update(url: string, data: any) {
