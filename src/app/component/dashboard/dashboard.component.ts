@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     department: '',
     status: '',
     date: '',
-    time: ''
+    time: '',
   };
 
   announceSortChange(sortState: Sort): void {
@@ -141,12 +141,20 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   deleteItem(item: any): void {
+    this.loader.start(); // Start the loader
     if (!item) return; // Ensure there is a selected item
     this.projectjsonservice.delete('projectData/delete', item.id).subscribe({
       next: (res) => {
         this.loadProjects();
+        this.loader.stop(); // Stop the loader
+        this.alert.success('Deleted successful');
       },
-      error: console.error // Use console.error to log errors
+      error: (error) => {
+        this.loader.stop(); // Stop the loader even on error
+        this.alert.error('Error deleting item');
+        console.error(error); // Log the error to console
+      }
+
     });
   }
 

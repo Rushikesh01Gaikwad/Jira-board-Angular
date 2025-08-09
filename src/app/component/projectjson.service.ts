@@ -52,13 +52,13 @@ export class ProjectjsonService {
     return this.httpClient.put(`${this.baseUrl}${url}/${data.id}`, data, { headers: header });
   }
 
-  delete(url: string, data: any) {
+  delete(url: string, id: any) {
     const header = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.authTokenService.getAccessToken()}`
     };
     //return this.httpClient.delete(`http://localhost:3000/projectData/${data}`);
-    return this.httpClient.delete(`${this.baseUrl}${url}` + data.id, { headers: header });
+    return this.httpClient.delete(`${this.baseUrl}${url}/${id}`, { headers: header });
   }
 
 }

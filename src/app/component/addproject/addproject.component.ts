@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Projectinterface } from '../projectinterface';
 import { ProjectjsonService } from '../projectjson.service';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { AlertService } from '../../alert.service';
 
 @Component({
   selector: 'app-addproject',
@@ -23,7 +25,7 @@ export class AddprojectComponent implements OnInit {
 
   constructor(private projectService: ProjectjsonService,
     private formBuilder: FormBuilder,
-    private router: Router) { }
+    private router: Router, private loder: NgxUiLoaderService, private alert: AlertService) { }
 
   ngOnInit(): void {
     // You can remove the form initialization from here since it's already initialized above
@@ -48,16 +50,21 @@ export class AddprojectComponent implements OnInit {
   }
 
   create() {
+    this.loder.start(); // Start the loader
     if (this.projectForm.valid) {
       this.formData = this.projectForm.value;
       this.projectService.post('projectData/Insert', this.formData).subscribe((response) => {
-        console.log('Record added successfully:', response);
+        this.projectForm.reset();
+        this.loder.stop(); // Stop the loader
+        this.alert.success('Project added successfully');
         this.router.navigate(['/Dashboard'])
       }, (error) => {
-        console.error('Error adding record:', error);
+        this.loder.stop(); // Stop the loader on error
+        this.alert.error('Error adding project', "error");
       });
     } else {
-      // Handle form validation errors here
+      this.loder.stop(); // Stop the loader if form is invalid
+      this.alert.error('Please fill all required fields', "error");
     }
   }
 }
