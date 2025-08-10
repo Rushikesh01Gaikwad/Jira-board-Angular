@@ -5,6 +5,7 @@ import { ProjectjsonService } from '../projectjson.service';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AlertService } from '../../alert.service';
+import { AuthTokenService } from '../auth-token.service';
 
 @Component({
   selector: 'app-addproject',
@@ -20,12 +21,13 @@ export class AddprojectComponent implements OnInit {
     location: ['', Validators.required],
     status: ['Registered', Validators.required],
     date: [this.getCurrentDate(), Validators.required],
-    time: [this.getCurrentTime(), Validators.required]
+    time: [this.getCurrentTime(), Validators.required],
+    userId: [this.authTokenService.getUserId(), Validators.required] // Assuming you want to set userId from auth token
   });
 
   constructor(private projectService: ProjectjsonService,
     private formBuilder: FormBuilder,
-    private router: Router, private loder: NgxUiLoaderService, private alert: AlertService) { }
+    private router: Router, private loder: NgxUiLoaderService, private alert: AlertService, private authTokenService: AuthTokenService) { }
 
   ngOnInit(): void {
     // You can remove the form initialization from here since it's already initialized above

@@ -42,6 +42,7 @@ export class LoginComponent {
 
           if (res.statusCd == 1) {
             this.authTokenService.setToken(res.data.token);
+            this.authTokenService.setUserId(res.data.user.id);
             this.router.navigate(['/dashboard']);
             this.loader.stop();
 

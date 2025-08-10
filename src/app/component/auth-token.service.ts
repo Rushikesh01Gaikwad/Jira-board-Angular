@@ -14,6 +14,7 @@ export class AuthTokenService {
   private accessToken: string = '';
   private expiration: Date | null = null;
   private refreshToken: string = '';
+  private userId: number | null = null;
 
   setToken(token: any): void {
     this.accessToken = token.accessToken;
@@ -21,12 +22,18 @@ export class AuthTokenService {
     this.refreshToken = token.refreshToken;
   }
 
+  setUserId(userId: number): void {
+    this.userId = userId;
+  }
 
   getAccessToken(): string {
     return this.accessToken;
   }
   getRefreshToken(): string {
     return this.refreshToken;
+  }
+  getUserId(): number | null {
+    return this.userId;
   }
 
   isTokenExpired(): boolean {
@@ -39,6 +46,7 @@ export class AuthTokenService {
     this.accessToken = '';
     this.expiration = null;
     this.refreshToken = '';
+    this.userId = null;
   }
 
   //   refreshTokenRequest(): Observable<any> {
